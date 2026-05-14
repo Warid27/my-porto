@@ -1,0 +1,60 @@
+---
+---
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-[var(--white)]" style="border-bottom: 3px solid var(--black);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2 no-underline">
+        <span class="font-mono font-bold text-black px-3 py-1" style="background: var(--yellow); border: 3px solid var(--black); box-shadow: 3px 3px 0 var(--black);">[ AW ]</span>
+        <span class="cursor-blink ml-1 font-mono font-bold">_</span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <div class="hidden lg:flex items-center gap-6">
+        <a href="#about" class="font-display font-bold text-[13px] uppercase tracking-[0.08em] text-black no-underline hover:text-[var(--yellow)] transition-colors">About</a>
+        <a href="#skills" class="font-display font-bold text-[13px] uppercase tracking-[0.08em] text-black no-underline hover:text-[var(--yellow)] transition-colors">Skills</a>
+        <a href="#timeline" class="font-display font-bold text-[13px] uppercase tracking-[0.08em] text-black no-underline hover:text-[var(--yellow)] transition-colors">Timeline</a>
+        <a href="#projects" class="font-display font-bold text-[13px] uppercase tracking-[0.08em] text-black no-underline hover:text-[var(--yellow)] transition-colors">Projects</a>
+        <a href="#contact" class="font-display font-bold text-[13px] uppercase tracking-[0.08em] text-black no-underline hover:text-[var(--yellow)] transition-colors">Contact</a>
+        <a href="#contact" class="nb-btn px-5 py-2 text-black no-underline" style="background: var(--yellow);">Hire Me →</a>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button id="hamburger" class="lg:hidden flex flex-col gap-[6px] bg-transparent border-none cursor-pointer p-2" aria-label="Open menu">
+        <span class="block w-7 h-[3px] bg-black"></span>
+        <span class="block w-7 h-[3px] bg-black"></span>
+        <span class="block w-7 h-[3px] bg-black"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu">
+  <button id="menu-close" class="absolute top-4 right-6 text-[var(--yellow)] text-[40px] font-mono font-black bg-transparent border-none cursor-pointer" aria-label="Close menu">&times;</button>
+  <a href="#about" class="text-white text-[36px] font-display font-bold no-underline">→ About</a>
+  <a href="#skills" class="text-white text-[36px] font-display font-bold no-underline">→ Skills</a>
+  <a href="#timeline" class="text-white text-[36px] font-display font-bold no-underline">→ Timeline</a>
+  <a href="#projects" class="text-white text-[36px] font-display font-bold no-underline">→ Projects</a>
+  <a href="#contact" class="text-white text-[36px] font-display font-bold no-underline">→ Contact</a>
+</div>
+
+<script>
+  // Scroll border swap
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('menu-close');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+  );
+</script>
+<style>
+  #navbar.scrolled { border-bottom: 3px solid var(--yellow); }
+</style>

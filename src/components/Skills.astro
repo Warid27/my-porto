@@ -1,0 +1,169 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<section id="skills" class="py-20 bg-[var(--white)]" style="border-top: 3px solid var(--black);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div data-aos="fade-up">
+      <span class="nb-section-label">[ SKILLS & TECH ]</span>
+      <h2 class="font-display font-extrabold text-[40px] mb-8">The tools that make the magic happen.</h2>
+    </div>
+
+    <!-- Tabs row -->
+    <div class="flex flex-wrap border-b-[3px] border-black" data-aos="fade-up">
+      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="frontend" data-active="true">Frontend</button>
+      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="backend" data-active="false">Backend</button>
+      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="database" data-active="false">Database</button>
+      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="devops" data-active="false">DevOps & Deploy</button>
+      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="other" data-active="false">Other</button>
+    </div>
+
+    <!-- FRONTEND PANEL -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="frontend" data-active="true">
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:nextdotjs" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Next.js</p><p class="font-mono text-[11px] text-[#666]">React framework for production</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:react" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">React</p><p class="font-mono text-[11px] text-[#666]">UI component library</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:vuedotjs" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Vue.js</p><p class="font-mono text-[11px] text-[#666]">Progressive JS framework</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:astro" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Astro</p><p class="font-mono text-[11px] text-[#666]">Content-first static sites</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:flutter" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Flutter</p><p class="font-mono text-[11px] text-[#666]">Cross-platform UI toolkit</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:threedotjs" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Three.js</p><p class="font-mono text-[11px] text-[#666]">3D graphics in browser</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:tailwindcss" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Tailwind CSS</p><p class="font-mono text-[11px] text-[#666]">Utility-first styling</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
+        <Icon name="simple-icons:typescript" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">TypeScript</p><p class="font-mono text-[11px] text-[#666]">Typed JavaScript</p></div>
+      </div>
+    </div>
+
+    <!-- BACKEND PANEL -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="backend" data-active="false">
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:nodedotjs" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Node.js</p><p class="font-mono text-[11px] text-[#666]">JS runtime for servers</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:express" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Express</p><p class="font-mono text-[11px] text-[#666]">Minimal web framework</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:laravel" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Laravel</p><p class="font-mono text-[11px] text-[#666]">PHP web framework</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:python" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Python</p><p class="font-mono text-[11px] text-[#666]">Scripting & automation</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:dart" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Dart</p><p class="font-mono text-[11px] text-[#666]">Language behind Flutter</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:csharp" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">C#</p><p class="font-mono text-[11px] text-[#666]">Games & .NET apps</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
+        <Icon name="simple-icons:javascript" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">JavaScript</p><p class="font-mono text-[11px] text-[#666]">Language of the web</p></div>
+      </div>
+    </div>
+
+    <!-- DATABASE PANEL -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="database" data-active="false">
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
+        <Icon name="simple-icons:postgresql" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">PostgreSQL</p><p class="font-mono text-[11px] text-[#666]">Relational SQL database</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
+        <Icon name="simple-icons:mysql" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">MySQL</p><p class="font-mono text-[11px] text-[#666]">Widely-used SQL DB</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
+        <Icon name="simple-icons:mongodb" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">MongoDB</p><p class="font-mono text-[11px] text-[#666]">NoSQL document store</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
+        <Icon name="simple-icons:supabase" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Supabase</p><p class="font-mono text-[11px] text-[#666]">Open-source Firebase alt</p></div>
+      </div>
+    </div>
+
+    <!-- DEVOPS PANEL -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="devops" data-active="false">
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
+        <Icon name="simple-icons:docker" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Docker</p><p class="font-mono text-[11px] text-[#666]">Container runtime</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
+        <Icon name="simple-icons:vercel" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Vercel</p><p class="font-mono text-[11px] text-[#666]">Serverless deployment</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
+        <Icon name="simple-icons:netlify" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Netlify</p><p class="font-mono text-[11px] text-[#666]">JAMstack hosting</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
+        <Icon name="simple-icons:github" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">GitHub</p><p class="font-mono text-[11px] text-[#666]">Version control & CI/CD</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
+        <Icon name="simple-icons:cloudflare" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Cloudflare</p><p class="font-mono text-[11px] text-[#666]">CDN, DNS & security</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
+        <Icon name="simple-icons:linux" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Linux / VPS</p><p class="font-mono text-[11px] text-[#666]">Self-hosted environments</p></div>
+      </div>
+    </div>
+
+    <!-- OTHER PANEL -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="other" data-active="false">
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
+        <Icon name="simple-icons:git" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Git</p><p class="font-mono text-[11px] text-[#666]">Version control</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
+        <Icon name="simple-icons:figma" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Figma</p><p class="font-mono text-[11px] text-[#666]">UI/UX design</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
+        <Icon name="simple-icons:visualstudiocode" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">VS Code</p><p class="font-mono text-[11px] text-[#666]">Primary editor</p></div>
+      </div>
+      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
+        <Icon name="simple-icons:threedotjs" class="w-6 h-6" />
+        <div><p class="font-display font-bold text-base">Three.js</p><p class="font-mono text-[11px] text-[#666]">3D graphics in browser</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.skill-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.skill-tab').forEach(t => t.dataset.active = 'false');
+      document.querySelectorAll('.skill-panel').forEach(p => p.dataset.active = 'false');
+      tab.dataset.active = 'true';
+      document.querySelector(`.skill-panel[data-tab="${target}"]`).dataset.active = 'true';
+    });
+  });
+</script>

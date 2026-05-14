@@ -1,0 +1,68 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<section id="contact" class="py-20" style="background: var(--yellow); border-top: 3px solid var(--black);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- LEFT -->
+      <div data-aos="fade-right">
+        <span class="nb-section-label">[ LET'S CONNECT ]</span>
+        <h2 class="font-display font-extrabold text-[38px] mb-4">Got a project? Let's build something worth talking about.</h2>
+        <p class="text-[15px] text-gray-800 mb-8 leading-relaxed">I'm always open to new opportunities, collaborations, and interesting conversations. Whether it's a web project, game concept, or just a chat about tech and physics — reach out!</p>
+
+        <!-- Social link cards -->
+        <div class="flex flex-col gap-3 mb-6">
+          <a href="https://github.com/Warid27" target="_blank" rel="noopener" class="nb-card bg-[var(--white)] p-4 flex items-center gap-4 cursor-pointer no-underline text-black hover:text-black">
+            <Icon name="simple-icons:github" class="w-6 h-6" />
+            <span class="font-display font-bold">GitHub</span>
+            <span class="font-mono text-sm text-gray-500">@Warid27</span>
+            <span class="ml-auto font-mono font-bold">→</span>
+          </a>
+          <a href="https://www.instagram.com/sinatrya_al_warid/" target="_blank" rel="noopener" class="nb-card bg-[var(--white)] p-4 flex items-center gap-4 cursor-pointer no-underline text-black hover:text-black">
+            <Icon name="simple-icons:instagram" class="w-6 h-6" />
+            <span class="font-display font-bold">Instagram</span>
+            <span class="font-mono text-sm text-gray-500">@sinatrya_al_warid</span>
+            <span class="ml-auto font-mono font-bold">→</span>
+          </a>
+          <a href="https://www.facebook.com/Sinatrya" target="_blank" rel="noopener" class="nb-card bg-[var(--white)] p-4 flex items-center gap-4 cursor-pointer no-underline text-black hover:text-black">
+            <Icon name="simple-icons:facebook" class="w-6 h-6" />
+            <span class="font-display font-bold">Facebook</span>
+            <span class="font-mono text-sm text-gray-500">Sinatrya Al Warid</span>
+            <span class="ml-auto font-mono font-bold">→</span>
+          </a>
+        </div>
+
+        <p class="font-mono text-sm text-gray-700">📧 Or reach me at: warid@al-warid.web.id</p>
+      </div>
+
+      <!-- RIGHT — quick message card -->
+      <div data-aos="fade-left">
+        <div class="nb-card bg-[var(--white)] p-6">
+          <h3 class="font-display font-bold text-[22px] mb-5">Drop a message</h3>
+
+          <!-- Replace action with Formspree: action="https://formspree.io/f/YOUR_ID" method="POST" -->
+          <form class="flex flex-col gap-4">
+            <input type="text" class="nb-input" placeholder="Your name" />
+            <input type="email" class="nb-input" placeholder="your@email.com" />
+            <input type="text" class="nb-input" placeholder="What's it about?" />
+            <textarea rows="4" class="nb-input" placeholder="Tell me about your project, idea, or just say hi..."></textarea>
+            <button type="button" class="nb-btn w-full justify-center" style="background:var(--black);color:var(--yellow);border-color:var(--black);" id="send-btn">Send it →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success toast -->
+  <div id="toast" class="hidden fixed bottom-6 right-6 z-[200] px-5 py-3 font-display font-bold text-sm" style="background: var(--yellow); border: 3px solid var(--black); box-shadow: 3px 3px 0 var(--black);">
+    Message received! I'll get back to you soon. 👋
+  </div>
+</section>
+
+<script>
+  document.getElementById('send-btn')?.addEventListener('click', () => {
+    const toast = document.getElementById('toast');
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 4000);
+  });
+</script>
