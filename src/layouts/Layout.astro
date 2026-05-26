@@ -5,7 +5,7 @@ export interface Props {
 }
 const {
   title = 'Sinatrya Al Warid — Developer Portfolio',
-  description = 'Full-stack web developer & game developer based in Magelang, Indonesia. Student at SMKN 2 Magelang, working at Reka Solusi Teknologi.',
+  description = 'Full-stack web developer & game developer based in Magelang, Indonesia. Graduate of SMKN 2 Magelang, working at Reka Solusi Teknologi.',
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -20,16 +20,14 @@ const {
   <meta property="og:url" content="https://al-warid.web.id" />
   <title>{title}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body>
   <slot />
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js'"></script>
   <script>
+    import AOS from 'aos';
     document.addEventListener('DOMContentLoaded', () => {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 450, once: true, offset: 50, easing: 'ease-out' });
-      }
+      AOS.init({ duration: 800, easing: 'ease-out-quart', once: true, offset: 60 });
     });
   </script>
 </body>

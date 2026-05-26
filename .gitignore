@@ -30,3 +30,5 @@ pnpm-debug.log*
 # Qwen
 QWEN.md
 .qwen/
+
+/specs

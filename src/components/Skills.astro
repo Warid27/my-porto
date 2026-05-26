@@ -1,156 +1,185 @@
 ---
 import { Icon } from 'astro-icon/components';
 ---
-<section id="skills" class="py-20 bg-[var(--white)]" style="border-top: 3px solid var(--black);">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="skills" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-card)]">
+  <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
     <!-- Header -->
-    <div data-aos="fade-up">
-      <span class="nb-section-label">[ SKILLS & TECH ]</span>
-      <h2 class="font-display font-extrabold text-[40px] mb-8">The tools that make the magic happen.</h2>
+    <div class="mb-12" data-aos="fade-up">
+      <span class="jp-label">Skills & Tech</span>
+      <h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">The tools that make the magic happen.</h2>
     </div>
 
-    <!-- Tabs row -->
-    <div class="flex flex-wrap border-b-[3px] border-black" data-aos="fade-up">
-      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="frontend" data-active="true">Frontend</button>
-      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="backend" data-active="false">Backend</button>
-      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="database" data-active="false">Database</button>
-      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="devops" data-active="false">DevOps & Deploy</button>
-      <button class="skill-tab nb-btn px-5 py-2 bg-[var(--white)] text-black border-b-0" data-tab="other" data-active="false">Other</button>
+    <!-- Tabs -->
+    <div class="flex flex-wrap border-b border-[var(--border)] mb-8" data-aos="fade-up">
+      <button class="skill-tab" data-tab="frontend" data-active="true">Frontend</button>
+      <button class="skill-tab" data-tab="backend" data-active="false">Backend</button>
+      <button class="skill-tab" data-tab="database" data-active="false">Database</button>
+      <button class="skill-tab" data-tab="devops" data-active="false">DevOps</button>
+      <button class="skill-tab" data-tab="other" data-active="false">Other</button>
     </div>
 
-    <!-- FRONTEND PANEL -->
-    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="frontend" data-active="true">
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:nextdotjs" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Next.js</p><p class="font-mono text-[11px] text-[#666]">React framework for production</p></div>
+    <!-- FRONTEND -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab="frontend" data-active="true">
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:monitor" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Next.js</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">React framework for production</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:react" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">React</p><p class="font-mono text-[11px] text-[#666]">UI component library</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:component" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">React</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">UI component library</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:vuedotjs" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Vue.js</p><p class="font-mono text-[11px] text-[#666]">Progressive JS framework</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:layout" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Vue.js</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Progressive JS framework</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:astro" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Astro</p><p class="font-mono text-[11px] text-[#666]">Content-first static sites</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:rocket" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Astro</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Content-first static sites</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:flutter" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Flutter</p><p class="font-mono text-[11px] text-[#666]">Cross-platform UI toolkit</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:smartphone" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Flutter</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Cross-platform UI toolkit</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:threedotjs" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Three.js</p><p class="font-mono text-[11px] text-[#666]">3D graphics in browser</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:box" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Three.js</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">3D graphics in browser</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:tailwindcss" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Tailwind CSS</p><p class="font-mono text-[11px] text-[#666]">Utility-first styling</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:palette" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Tailwind CSS</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Utility-first styling</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--blue);">
-        <Icon name="simple-icons:typescript" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">TypeScript</p><p class="font-mono text-[11px] text-[#666]">Typed JavaScript</p></div>
-      </div>
-    </div>
-
-    <!-- BACKEND PANEL -->
-    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="backend" data-active="false">
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:nodedotjs" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Node.js</p><p class="font-mono text-[11px] text-[#666]">JS runtime for servers</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:express" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Express</p><p class="font-mono text-[11px] text-[#666]">Minimal web framework</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:laravel" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Laravel</p><p class="font-mono text-[11px] text-[#666]">PHP web framework</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:python" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Python</p><p class="font-mono text-[11px] text-[#666]">Scripting & automation</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:dart" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Dart</p><p class="font-mono text-[11px] text-[#666]">Language behind Flutter</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:csharp" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">C#</p><p class="font-mono text-[11px] text-[#666]">Games & .NET apps</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--green);">
-        <Icon name="simple-icons:javascript" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">JavaScript</p><p class="font-mono text-[11px] text-[#666]">Language of the web</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:braces" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">TypeScript</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Typed JavaScript</p>
       </div>
     </div>
 
-    <!-- DATABASE PANEL -->
-    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="database" data-active="false">
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
-        <Icon name="simple-icons:postgresql" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">PostgreSQL</p><p class="font-mono text-[11px] text-[#666]">Relational SQL database</p></div>
+    <!-- BACKEND -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab="backend" data-active="false">
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:server" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Node.js</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">JS runtime for servers</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
-        <Icon name="simple-icons:mysql" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">MySQL</p><p class="font-mono text-[11px] text-[#666]">Widely-used SQL DB</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:network" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Express</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Minimal web framework</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
-        <Icon name="simple-icons:mongodb" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">MongoDB</p><p class="font-mono text-[11px] text-[#666]">NoSQL document store</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:shell" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Laravel</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">PHP web framework</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--pink);">
-        <Icon name="simple-icons:supabase" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Supabase</p><p class="font-mono text-[11px] text-[#666]">Open-source Firebase alt</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:terminal" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Python</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Scripting & automation</p>
       </div>
-    </div>
-
-    <!-- DEVOPS PANEL -->
-    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="devops" data-active="false">
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
-        <Icon name="simple-icons:docker" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Docker</p><p class="font-mono text-[11px] text-[#666]">Container runtime</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:code-2" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Dart</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Language behind Flutter</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
-        <Icon name="simple-icons:vercel" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Vercel</p><p class="font-mono text-[11px] text-[#666]">Serverless deployment</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:layers" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">C#</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Games & .NET apps</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
-        <Icon name="simple-icons:netlify" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Netlify</p><p class="font-mono text-[11px] text-[#666]">JAMstack hosting</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
-        <Icon name="simple-icons:github" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">GitHub</p><p class="font-mono text-[11px] text-[#666]">Version control & CI/CD</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
-        <Icon name="simple-icons:cloudflare" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Cloudflare</p><p class="font-mono text-[11px] text-[#666]">CDN, DNS & security</p></div>
-      </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--orange);">
-        <Icon name="simple-icons:linux" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Linux / VPS</p><p class="font-mono text-[11px] text-[#666]">Self-hosted environments</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:file-code" class="w-8 h-8" style="color: var(--accent-moss);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">JavaScript</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Language of the web</p>
       </div>
     </div>
 
-    <!-- OTHER PANEL -->
-    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" data-tab="other" data-active="false">
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
-        <Icon name="simple-icons:git" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Git</p><p class="font-mono text-[11px] text-[#666]">Version control</p></div>
+    <!-- DATABASE -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab="database" data-active="false">
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:database" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">PostgreSQL</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Relational SQL database</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
-        <Icon name="simple-icons:figma" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Figma</p><p class="font-mono text-[11px] text-[#666]">UI/UX design</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:database-backup" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">MySQL</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Widely-used SQL DB</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
-        <Icon name="simple-icons:visualstudiocode" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">VS Code</p><p class="font-mono text-[11px] text-[#666]">Primary editor</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:folder-tree" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">MongoDB</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">NoSQL document store</p>
       </div>
-      <div class="nb-card bg-[var(--white)] p-4 flex items-center gap-3" style="border-left: 5px solid var(--purple);">
-        <Icon name="simple-icons:threedotjs" class="w-6 h-6" />
-        <div><p class="font-display font-bold text-base">Three.js</p><p class="font-mono text-[11px] text-[#666]">3D graphics in browser</p></div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:cloud" class="w-8 h-8" style="color: var(--accent-sakura);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Supabase</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Open-source Firebase alt</p>
+      </div>
+    </div>
+
+    <!-- DEVOPS -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab="devops" data-active="false">
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:container" class="w-8 h-8" style="color: var(--accent-charcoal);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Docker</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Container runtime</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:globe" class="w-8 h-8" style="color: var(--accent-charcoal);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Vercel</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Serverless deployment</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:upload-cloud" class="w-8 h-8" style="color: var(--accent-charcoal);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Netlify</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">JAMstack hosting</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:git-branch" class="w-8 h-8" style="color: var(--accent-charcoal);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">GitHub</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Version control & CI/CD</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:shield" class="w-8 h-8" style="color: var(--accent-charcoal);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Cloudflare</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">CDN, DNS & security</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:hard-drive" class="w-8 h-8" style="color: var(--accent-charcoal);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Linux / VPS</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Self-hosted environments</p>
+      </div>
+    </div>
+
+    <!-- OTHER -->
+    <div class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab="other" data-active="false">
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:git-merge" class="w-8 h-8" style="color: var(--accent-stone);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Git</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Version control</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:pen-tool" class="w-8 h-8" style="color: var(--accent-stone);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Figma</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">UI/UX design</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:pencil" class="w-8 h-8" style="color: var(--accent-stone);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">VS Code</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">Primary editor</p>
+      </div>
+      <div class="jp-card p-5 flex flex-col items-start">
+        <Icon name="lucide:box" class="w-8 h-8" style="color: var(--accent-stone);" />
+        <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">Three.js</h3>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">3D graphics in browser</p>
       </div>
     </div>
   </div>

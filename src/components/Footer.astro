@@ -1,37 +1,49 @@
 ---
 import { Icon } from 'astro-icon/components';
 ---
-<footer style="background: var(--black); border-top: 3px solid var(--yellow);">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Top row -->
-    <div class="flex flex-col md:flex-row items-center justify-between py-6 gap-4" style="border-bottom: 1px solid #333;">
-      <!-- Logo -->
-      <span class="font-mono font-bold text-[var(--yellow)] px-3 py-1" style="border: 3px solid var(--yellow); box-shadow: 3px 3px 0 var(--yellow);">[ AW ]</span>
+<footer style="background: var(--bg-dark); border-top: 1px solid rgba(245,239,230,0.12);">
+  <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <!-- Left — Logo + social -->
+      <div class="flex flex-col items-start gap-4">
+        <span class="font-display font-semibold text-2xl text-white tracking-tight">
+          sinatrya<span style="color: var(--accent-sakura);">.</span>
+        </span>
+        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">Designed & built with too much espresso in Magelang, Indonesia.</p>
+        <div class="flex gap-3 mt-1">
+          <a href="https://github.com/Warid27" target="_blank" rel="noopener" class="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--text-muted)] bg-transparent text-[var(--text-muted)] no-underline transition-all hover:border-white hover:text-white" style="opacity: 0.7;">
+            <Icon name="lucide:github" class="w-4 h-4" />
+          </a>
+          <a href="https://www.instagram.com/sinatrya_al_warid/" target="_blank" rel="noopener" class="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--text-muted)] bg-transparent text-[var(--text-muted)] no-underline transition-all hover:border-white hover:text-white" style="opacity: 0.7;">
+            <Icon name="lucide:instagram" class="w-4 h-4" />
+          </a>
+          <a href="https://www.facebook.com/Sinatrya" target="_blank" rel="noopener" class="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--text-muted)] bg-transparent text-[var(--text-muted)] no-underline transition-all hover:border-white hover:text-white" style="opacity: 0.7;">
+            <Icon name="lucide:facebook" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
 
-      <!-- Center text -->
-      <p class="font-mono text-[13px] text-center" style="color: #888;">Designed & built with too much espresso in Magelang, Indonesia.</p>
+      <!-- Center — Nav links -->
+      <div class="flex flex-col gap-3 md:items-center">
+        <a href="#about" class="font-body font-light text-sm text-[var(--text-muted)] no-underline hover:text-white transition-colors">About</a>
+        <a href="#skills" class="font-body font-light text-sm text-[var(--text-muted)] no-underline hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="font-body font-light text-sm text-[var(--text-muted)] no-underline hover:text-white transition-colors">Projects</a>
+        <a href="#contact" class="font-body font-light text-sm text-[var(--text-muted)] no-underline hover:text-white transition-colors">Contact</a>
+      </div>
 
-      <!-- Social icons -->
-      <div class="flex gap-2">
-        <a href="https://github.com/Warid27" target="_blank" rel="noopener" class="nb-btn px-2 py-2 bg-transparent text-white border-white" style="box-shadow: 2px 2px 0 var(--yellow);">
-          <Icon name="simple-icons:github" class="w-5 h-5" />
-        </a>
-        <a href="https://www.instagram.com/sinatrya_al_warid/" target="_blank" rel="noopener" class="nb-btn px-2 py-2 bg-transparent text-white border-white" style="box-shadow: 2px 2px 0 var(--yellow);">
-          <Icon name="simple-icons:instagram" class="w-5 h-5" />
-        </a>
-        <a href="https://www.facebook.com/Sinatrya" target="_blank" rel="noopener" class="nb-btn px-2 py-2 bg-transparent text-white border-white" style="box-shadow: 2px 2px 0 var(--yellow);">
-          <Icon name="simple-icons:facebook" class="w-5 h-5" />
-        </a>
+      <!-- Right — CTA -->
+      <div class="flex flex-col items-start md:items-end gap-4">
+        <a href="#contact" class="jp-btn-primary text-sm" style="background: var(--accent-sakura); color: var(--bg-dark);">Get in touch →</a>
       </div>
     </div>
 
     <!-- Bottom row -->
-    <div class="flex flex-col sm:flex-row items-center justify-between py-4 gap-2">
-      <p class="font-mono text-xs" style="color: #666;">&copy; 2025 Sinatrya Al Warid</p>
-      <a href="https://al-warid.web.id" class="font-mono text-xs no-underline" style="color: var(--yellow);">al-warid.web.id</a>
+    <div class="flex flex-col sm:flex-row items-center justify-between pt-8 mt-8 gap-3" style="border-top: 1px solid rgba(245,239,230,0.08);">
+      <p class="font-body font-light text-xs text-[var(--text-muted)]">&copy; 2025 Sinatrya Al Warid. All rights reserved.</p>
+      <a href="https://al-warid.web.id" class="font-body font-light text-xs text-[var(--text-muted)] no-underline hover:text-white transition-colors">al-warid.web.id</a>
     </div>
 
     <!-- Easter egg -->
-    <p class="font-mono text-[11px] text-center pb-4" style="color: #444;">/* This site will not be held responsible for any existential crises caused by actually understanding your legacy codebase. */</p>
+    <p class="font-body font-light text-[11px] text-center mt-6" style="color: rgba(245,239,230,0.15);">/* Built with intention, a quiet evening, and just enough caffeine. */</p>
   </div>
 </footer>

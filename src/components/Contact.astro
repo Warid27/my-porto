@@ -1,52 +1,64 @@
 ---
 import { Icon } from 'astro-icon/components';
 ---
-<section id="contact" class="py-20" style="background: var(--yellow); border-top: 3px solid var(--black);">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <!-- LEFT -->
+<section id="contact" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-card)]">
+  <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- LEFT — Info + social -->
       <div data-aos="fade-right">
-        <span class="nb-section-label">[ LET'S CONNECT ]</span>
-        <h2 class="font-display font-extrabold text-[38px] mb-4">Got a project? Let's build something worth talking about.</h2>
-        <p class="text-[15px] text-gray-800 mb-8 leading-relaxed">I'm always open to new opportunities, collaborations, and interesting conversations. Whether it's a web project, game concept, or just a chat about tech and physics — reach out!</p>
+        <span class="jp-label">Let's Connect</span>
+        <h2 class="jp-heading mb-4" style="font-size: clamp(2rem, 3.5vw, 2.25rem);">Got a project? Let's build something worth talking about.</h2>
+        <p class="font-body font-light text-[15px] text-[var(--text-secondary)] mb-8 leading-relaxed">I'm always open to new opportunities, collaborations, and interesting conversations. Whether it's a web project, game concept, or just a chat about tech and physics — reach out!</p>
 
-        <!-- Social link cards -->
-        <div class="flex flex-col gap-3 mb-6">
-          <a href="https://github.com/Warid27" target="_blank" rel="noopener" class="nb-card bg-[var(--white)] p-4 flex items-center gap-4 cursor-pointer no-underline text-black hover:text-black">
-            <Icon name="simple-icons:github" class="w-6 h-6" />
-            <span class="font-display font-bold">GitHub</span>
-            <span class="font-mono text-sm text-gray-500">@Warid27</span>
-            <span class="ml-auto font-mono font-bold">→</span>
+        <!-- Social links -->
+        <div class="space-y-3 mb-6">
+          <a href="https://github.com/Warid27" target="_blank" rel="noopener" class="jp-card p-4 flex items-center gap-4 no-underline group">
+            <Icon name="lucide:github" class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-sakura)] transition-colors" />
+            <span class="font-body font-normal text-sm text-[var(--text-primary)]">GitHub</span>
+            <span class="font-body font-light text-sm text-[var(--text-muted)]">@Warid27</span>
+            <span class="ml-auto font-body text-[var(--text-muted)] group-hover:text-[var(--accent-sakura)] transition-colors">→</span>
           </a>
-          <a href="https://www.instagram.com/sinatrya_al_warid/" target="_blank" rel="noopener" class="nb-card bg-[var(--white)] p-4 flex items-center gap-4 cursor-pointer no-underline text-black hover:text-black">
-            <Icon name="simple-icons:instagram" class="w-6 h-6" />
-            <span class="font-display font-bold">Instagram</span>
-            <span class="font-mono text-sm text-gray-500">@sinatrya_al_warid</span>
-            <span class="ml-auto font-mono font-bold">→</span>
+          <a href="https://www.instagram.com/sinatrya_al_warid/" target="_blank" rel="noopener" class="jp-card p-4 flex items-center gap-4 no-underline group">
+            <Icon name="lucide:instagram" class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-sakura)] transition-colors" />
+            <span class="font-body font-normal text-sm text-[var(--text-primary)]">Instagram</span>
+            <span class="font-body font-light text-sm text-[var(--text-muted)]">@sinatrya_al_warid</span>
+            <span class="ml-auto font-body text-[var(--text-muted)] group-hover:text-[var(--accent-sakura)] transition-colors">→</span>
           </a>
-          <a href="https://www.facebook.com/Sinatrya" target="_blank" rel="noopener" class="nb-card bg-[var(--white)] p-4 flex items-center gap-4 cursor-pointer no-underline text-black hover:text-black">
-            <Icon name="simple-icons:facebook" class="w-6 h-6" />
-            <span class="font-display font-bold">Facebook</span>
-            <span class="font-mono text-sm text-gray-500">Sinatrya Al Warid</span>
-            <span class="ml-auto font-mono font-bold">→</span>
+          <a href="https://www.facebook.com/Sinatrya" target="_blank" rel="noopener" class="jp-card p-4 flex items-center gap-4 no-underline group">
+            <Icon name="lucide:facebook" class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-sakura)] transition-colors" />
+            <span class="font-body font-normal text-sm text-[var(--text-primary)]">Facebook</span>
+            <span class="font-body font-light text-sm text-[var(--text-muted)]">Sinatrya Al Warid</span>
+            <span class="ml-auto font-body text-[var(--text-muted)] group-hover:text-[var(--accent-sakura)] transition-colors">→</span>
           </a>
         </div>
 
-        <p class="font-mono text-sm text-gray-700">📧 Or reach me at: warid@al-warid.web.id</p>
+        <p class="font-body font-light text-sm text-[var(--text-muted)]">📧 warid@al-warid.web.id</p>
       </div>
 
-      <!-- RIGHT — quick message card -->
+      <!-- RIGHT — Contact form -->
       <div data-aos="fade-left">
-        <div class="nb-card bg-[var(--white)] p-6">
-          <h3 class="font-display font-bold text-[22px] mb-5">Drop a message</h3>
-
-          <!-- Replace action with Formspree: action="https://formspree.io/f/YOUR_ID" method="POST" -->
-          <form class="flex flex-col gap-4">
-            <input type="text" class="nb-input" placeholder="Your name" />
-            <input type="email" class="nb-input" placeholder="your@email.com" />
-            <input type="text" class="nb-input" placeholder="What's it about?" />
-            <textarea rows="4" class="nb-input" placeholder="Tell me about your project, idea, or just say hi..."></textarea>
-            <button type="button" class="nb-btn w-full justify-center" style="background:var(--black);color:var(--yellow);border-color:var(--black);" id="send-btn">Send it →</button>
+        <div class="jp-card p-8 bg-[var(--bg-base)]">
+          <h3 class="font-body font-medium text-lg text-[var(--text-primary)] mb-6">Drop a message</h3>
+          <form class="flex flex-col gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="jp-label" for="name">Name</label>
+                <input type="text" id="name" class="jp-input" placeholder="Your name" />
+              </div>
+              <div>
+                <label class="jp-label" for="email">Email</label>
+                <input type="email" id="email" class="jp-input" placeholder="your@email.com" />
+              </div>
+            </div>
+            <div>
+              <label class="jp-label" for="subject">Subject</label>
+              <input type="text" id="subject" class="jp-input" placeholder="What's it about?" />
+            </div>
+            <div>
+              <label class="jp-label" for="message">Message</label>
+              <textarea id="message" rows="4" class="jp-input resize-none" placeholder="Tell me about your project, idea, or just say hi..."></textarea>
+            </div>
+            <button type="button" class="jp-btn-primary w-full justify-center" id="send-btn">Send it →</button>
           </form>
         </div>
       </div>
@@ -54,7 +66,7 @@ import { Icon } from 'astro-icon/components';
   </div>
 
   <!-- Success toast -->
-  <div id="toast" class="hidden fixed bottom-6 right-6 z-[200] px-5 py-3 font-display font-bold text-sm" style="background: var(--yellow); border: 3px solid var(--black); box-shadow: 3px 3px 0 var(--black);">
+  <div id="toast" class="hidden fixed bottom-6 right-6 z-[200] px-5 py-3 font-body font-normal text-sm" style="background: var(--accent-sakura); color: var(--bg-base); border-radius: var(--radius-card); box-shadow: var(--shadow-card);">
     Message received! I'll get back to you soon. 👋
   </div>
 </section>
