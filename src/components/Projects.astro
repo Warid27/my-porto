@@ -1,87 +1,21 @@
 ---
-const projects = [
-  {
-    num: '01',
-    name: 'Pemiyos',
-    url: 'https://pemiyos.netlify.app/',
-    tags: ['Web', 'Full-stack', 'Collaborative'],
-    accent: 'var(--accent-sakura)',
-    featured: true,
-    badge: 'Most Contribution',
-    description: 'Full-featured collaborative web project — my most significant contribution to date. Showcases comprehensive full-stack web development skills across the entire project lifecycle.',
-    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23D4A892"/%3E%3Ccircle cx="200" cy="120" r="60" fill="%23C4B5A0" opacity="0.5"/%3E%3Crect x="80" y="200" width="240" height="4" rx="2" fill="%23E8D5B7" opacity="0.6"/%3E%3C/svg%3E',
-  },
-  {
-    num: '02',
-    name: 'Saga Advisor',
-    url: 'https://saga-advisor.vercel.app/',
-    tags: ['Next.js', 'Vercel', 'Web App'],
-    accent: 'var(--accent-stone)',
-    featured: false,
-    description: 'Prototype professional web application built with Next.js. Clean architecture, modern UX patterns, and deployed to Vercel.',
-    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%238B9E7E"/%3E%3Ccircle cx="150" cy="130" r="50" fill="%239EB08C" opacity="0.5"/%3E%3Crect x="60" y="210" width="280" height="3" rx="1.5" fill="%23B0C0A0" opacity="0.6"/%3E%3C/svg%3E',
-  },
-  {
-    num: '03',
-    name: 'LKS 2025',
-    url: 'https://lks-2025-warid.vercel.app/',
-    tags: ['Game', 'HTML/CSS/JS', 'Competition'],
-    accent: 'var(--accent-sakura)',
-    featured: false,
-    description: 'Browser-based Bomb It-style game built for national vocational skills competition (LKS). Fully playable, zero dependencies, pure HTML/CSS/JS.',
-    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23C4B5A0"/%3E%3Ccircle cx="250" cy="100" r="55" fill="%23D4A892" opacity="0.5"/%3E%3Crect x="80" y="190" width="240" height="3" rx="1.5" fill="%23D4C4B0" opacity="0.6"/%3E%3C/svg%3E',
-  },
-  {
-    num: '04',
-    name: 'Chailly Bot',
-    url: 'https://chaillubot.vercel.app/',
-    tags: ['AI', 'Next.js', 'Bot'],
-    accent: 'var(--accent-moss)',
-    featured: false,
-    description: 'Interactive AI assistant bot with advanced conversational abilities and a clean, smooth interface. Built with Next.js.',
-    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23D4907A"/%3E%3Ccircle cx="200" cy="140" r="45" fill="%23E8B4A4" opacity="0.4"/%3E%3Crect x="100" y="220" width="200" height="3" rx="1.5" fill="%23E8C9B5" opacity="0.5"/%3E%3C/svg%3E',
-  },
-  {
-    num: '05',
-    name: 'Crossy Road Three.js',
-    url: 'https://crossy-road-threejs-next.vercel.app/',
-    tags: ['3D', 'Three.js', 'Next.js', 'Game'],
-    accent: 'var(--accent-charcoal)',
-    featured: false,
-    description: '3D browser game recreating Crossy Road mechanics using Three.js and Next.js. Full 3D scene, collision detection, and score system.',
-    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%234A3C35"/%3E%3Ccircle cx="180" cy="110" r="50" fill="%236A5C55" opacity="0.5"/%3E%3Crect x="80" y="200" width="240" height="2" rx="1" fill="%237A6C65" opacity="0.5"/%3E%3C/svg%3E',
-  },
-  {
-    num: '06',
-    name: 'Latihan LKS',
-    url: 'https://latihan-lks.vercel.app/',
-    tags: ['Training', 'Next.js', 'Full-stack'],
-    accent: 'var(--accent-sand)',
-    featured: false,
-    description: 'Full-stack training project built as competition preparation. End-to-end implementation with modern tooling and clean codebase.',
-    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23E8D5B7"/%3E%3Ccircle cx="220" cy="120" r="40" fill="%23D4A892" opacity="0.4"/%3E%3Crect x="100" y="210" width="200" height="3" rx="1.5" fill="%23C4B5A0" opacity="0.5"/%3E%3C/svg%3E',
-  },
-];
+import projectsData from '../../data/projects.json';
+const { sectionLabel, heading, subtext, projects } = projectsData;
 ---
 <section id="projects" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-card)]">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
-    <!-- Header -->
     <div class="mb-12" data-aos="fade-up">
-      <span class="jp-label">Featured Projects</span>
-      <h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">Things I've actually shipped.</h2>
-      <p class="font-body font-light text-sm text-[var(--text-muted)] mt-2">Real projects. Real URLs. Click to explore them live.</p>
+      <span class="jp-label">{sectionLabel}</span>
+      <h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">{heading}</h2>
+      <p class="font-body font-light text-sm text-[var(--text-muted)] mt-2">{subtext}</p>
     </div>
 
-    <!-- Project grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {projects.map((project, i) => (
         <div class={`jp-card flex flex-col overflow-hidden relative group ${project.featured ? 'lg:col-span-2 lg:row-span-1' : ''}`} data-aos="fade-up" data-aos-delay={i * 80}>
-          <!-- Image area -->
           <div class="relative aspect-[4/3] overflow-hidden">
             <img src={project.image} alt={project.name} class="w-full h-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.06]" style="background: var(--bg-accent);" />
             <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(44,36,32,0.7) 0%, transparent 60%);"></div>
-
-            <!-- Content over image -->
             <div class="absolute bottom-0 left-0 right-0 p-5">
               {project.featured && (
                 <span class="jp-tag mb-2 inline-block" style="background: var(--accent-sakura); color: var(--bg-base); border-color: var(--accent-sakura);">{project.badge || 'Featured'}</span>
@@ -94,8 +28,6 @@ const projects = [
               </div>
             </div>
           </div>
-
-          <!-- Below image -->
           <div class="p-5 flex flex-col flex-1">
             <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mb-3 flex-1">{project.description}</p>
             <a href={project.url} target="_blank" rel="noopener" class="jp-btn-outline text-sm justify-center">View Project →</a>

@@ -1,0 +1,42 @@
+{
+  "sectionLabel": "My Journey",
+  "heading": "From curious kid to working developer.",
+  "entries": [
+    {
+      "year": "2025",
+      "label": "Present Role",
+      "title": "Reka Solusi Teknologi",
+      "role": "Full-time Developer",
+      "description": "Building digital solutions for real clients. Taking what I learned into production every day.",
+      "accent": "var(--accent-sakura)",
+      "side": "left"
+    },
+    {
+      "year": "2023",
+      "label": "Past Role",
+      "title": "PT Teknoreka Inovasi",
+      "role": "Internship — Web Developer",
+      "description": "Applied web dev skills in a professional environment for the first time. Learned that real codebases have feelings.",
+      "accent": "var(--accent-stone)",
+      "side": "right"
+    },
+    {
+      "year": "2022",
+      "label": "Education",
+      "title": "SMKN 2 Kota Magelang",
+      "role": "Vocational High School · PPLG Major",
+      "description": "Chose the software development major and never looked back. This is where the obsession became a career path.",
+      "accent": "var(--accent-moss)",
+      "side": "left"
+    },
+    {
+      "year": "2019",
+      "label": "Education",
+      "title": "SMPN 1 Kota Magelang",
+      "role": "Junior High School",
+      "description": "Where it all began. Discovered programming between physics homework and bad guitar solos.",
+      "accent": "var(--accent-sakura)",
+      "side": "right"
+    }
+  ]
+}

@@ -1,15 +1,17 @@
 ---
+import site from '../../data/site.json';
+
 export interface Props {
   title?: string;
   description?: string;
 }
 const {
-  title = 'Sinatrya Al Warid — Developer Portfolio',
-  description = 'Full-stack web developer & game developer based in Magelang, Indonesia. Graduate of SMKN 2 Magelang, working at Reka Solusi Teknologi.',
+  title = site.title,
+  description = site.description,
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang={site.locale}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +19,7 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://al-warid.web.id" />
+  <meta property="og:url" content={site.domain} />
   <title>{title}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />

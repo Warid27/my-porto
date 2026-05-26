@@ -1,49 +1,43 @@
+---
+import about from '../../data/about.json';
+---
 <section id="about" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-base)]">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <!-- LEFT — Giant display quote -->
       <div data-aos="fade-right">
         <h2 class="font-display font-light leading-[1.15] text-[var(--text-primary)]" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">
-          A Harmonious<br />
-          Blend of Code<br />
-          <span style="color: var(--accent-sakura);">and Craft.</span>
+          {about.quote.line1}<br />
+          {about.quote.line2}<br />
+          <span style="color: var(--accent-sakura);">{about.quote.line3}</span>
         </h2>
       </div>
 
       <!-- RIGHT — Text content -->
       <div data-aos="fade-left">
-        <span class="jp-label">About Me</span>
-        <p class="font-body font-light text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">
-          I'm an ambitious and passionate developer with a strong interest in web development, game design, physics, and music. My journey started with curiosity about how things work — it grew into a commitment to building meaningful digital experiences.
-        </p>
-        <div style="border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;"></div>
-        <p class="font-body font-light text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">
-          A graduate of SMKN 2 Magelang (PPLG major), now working full-time at Reka Solusi Teknologi. I experiment daily with Next.js, Laravel, Flutter, Three.js, and anything that challenges me. When I'm not coding, I'm exploring game engines, thinking about physics, or listening to music.
-        </p>
+        <span class="jp-label">{about.sectionLabel}</span>
+        {about.paragraphs.map((p, i) => (
+          <>
+            <p class="font-body font-light text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">{p}</p>
+            {i < about.paragraphs.length - 1 && <div style="border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;"></div>}
+          </>
+        ))}
 
         <!-- Info cards row -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          <div class="jp-card p-4">
-            <p class="font-body font-normal text-[11px] uppercase tracking-[0.08em] text-[var(--text-muted)] mb-1">🎓 Graduated from</p>
-            <p class="font-body font-normal text-sm text-[var(--text-primary)]">SMKN 2 Magelang · PPLG Major</p>
-          </div>
-          <div class="jp-card p-4">
-            <p class="font-body font-normal text-[11px] uppercase tracking-[0.08em] text-[var(--text-muted)] mb-1">💼 Working at</p>
-            <p class="font-body font-normal text-sm text-[var(--text-primary)]">Reka Solusi Teknologi</p>
-          </div>
-          <div class="jp-card p-4 sm:col-span-2">
-            <p class="font-body font-normal text-[11px] uppercase tracking-[0.08em] text-[var(--text-muted)] mb-1">📍 Location</p>
-            <p class="font-body font-normal text-sm text-[var(--text-primary)]">Magelang, Central Java, Indonesia</p>
-          </div>
+          {about.infoCards.map(card => (
+            <div class={`jp-card p-4${card.span ? ' sm:col-span-2' : ''}`}>
+              <p class="font-body font-normal text-[11px] uppercase tracking-[0.08em] text-[var(--text-muted)] mb-1">{card.icon} {card.label}</p>
+              <p class="font-body font-normal text-sm text-[var(--text-primary)]">{card.value}</p>
+            </div>
+          ))}
         </div>
 
         <!-- Interest badges -->
         <div class="flex flex-wrap gap-2">
-          <span class="jp-tag">Game Engines</span>
-          <span class="jp-tag">Physics</span>
-          <span class="jp-tag">Music</span>
-          <span class="jp-tag">Open Source</span>
-          <span class="jp-tag">3D Graphics</span>
+          {about.interestBadges.map(badge => (
+            <span class="jp-tag">{badge}</span>
+          ))}
         </div>
       </div>
     </div>

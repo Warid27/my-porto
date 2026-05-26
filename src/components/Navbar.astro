@@ -1,17 +1,19 @@
+---
+import site from '../../data/site.json';
+---
 <nav id="navbar" class="fixed top-0 left-0 w-full z-50 h-16" style="background: rgba(245,239,230,0.85); backdrop-filter: blur(12px) saturate(1.4); -webkit-backdrop-filter: blur(12px) saturate(1.4); border-bottom: 1px solid var(--border); transition: background 300ms ease;">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] h-full flex items-center justify-between">
     <!-- Logo -->
     <a href="#home" class="font-display font-semibold text-xl text-[var(--text-primary)] no-underline tracking-tight">
-      sinatrya<span style="color: var(--accent-sakura);">.</span>
+      {site.shortName}<span style="color: var(--accent-sakura);">.</span>
     </a>
 
     <!-- Desktop nav links -->
     <div class="hidden lg:flex items-center gap-8">
-      <a href="#about" class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">About</a>
-      <a href="#skills" class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">Skills</a>
-      <a href="#projects" class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">Projects</a>
-      <a href="#contact" class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">Contact</a>
-      <a href="#contact" class="jp-btn-primary text-sm" style="padding: 8px 20px;">Contact me →</a>
+      {site.nav.map(link => (
+        <a href={link.href} class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">{link.label}</a>
+      ))}
+      <a href={site.cta.href} class="jp-btn-primary text-sm" style="padding: 8px 20px;">{site.cta.label}</a>
     </div>
 
     <!-- Hamburger (mobile only) -->
@@ -26,10 +28,9 @@
 <!-- Mobile menu overlay -->
 <div id="mobile-menu">
   <button id="menu-close" class="absolute top-6 right-8 text-[var(--text-muted)] text-[40px] font-body font-light bg-transparent border-none cursor-pointer leading-none" aria-label="Close menu">&times;</button>
-  <a href="#about" class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">About</a>
-  <a href="#skills" class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">Skills</a>
-  <a href="#projects" class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">Projects</a>
-  <a href="#contact" class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">Contact</a>
+  {site.nav.map(link => (
+    <a href={link.href} class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">{link.label}</a>
+  ))}
 </div>
 
 <script>

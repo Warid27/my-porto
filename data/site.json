@@ -1,0 +1,52 @@
+{
+  "name": "Sinatrya Al Warid",
+  "shortName": "sinatrya",
+  "firstName": "Sinatrya",
+  "lastName": "Al Warid",
+  "domain": "https://al-warid.web.id",
+  "title": "Sinatrya Al Warid — Developer Portfolio",
+  "description": "Full-stack web developer & game developer based in Magelang, Indonesia. Graduate of SMKN 2 Magelang, working at Reka Solusi Teknologi.",
+  "locale": "en",
+  "nav": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "cta": {
+    "label": "Contact me →",
+    "href": "#contact"
+  },
+  "footer": {
+    "tagline": "Designed & built with too much espresso in Magelang, Indonesia.",
+    "copyright": "© 2025 Sinatrya Al Warid. All rights reserved.",
+    "easterEgg": "/* Built with intention, a quiet evening, and just enough caffeine. */",
+    "cta": "Get in touch →",
+    "nav": [
+      { "label": "About", "href": "#about" },
+      { "label": "Skills", "href": "#skills" },
+      { "label": "Projects", "href": "#projects" },
+      { "label": "Contact", "href": "#contact" }
+    ]
+  },
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/Warid27",
+      "handle": "@Warid27",
+      "icon": "lucide:github"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/sinatrya_al_warid/",
+      "handle": "@sinatrya_al_warid",
+      "icon": "lucide:instagram"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/Sinatrya",
+      "handle": "Sinatrya Al Warid",
+      "icon": "lucide:facebook"
+    }
+  ]
+}

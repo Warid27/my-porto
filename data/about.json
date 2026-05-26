@@ -1,0 +1,24 @@
+{
+  "sectionLabel": "About Me",
+  "quote": {
+    "line1": "A Harmonious",
+    "line2": "Blend of Code",
+    "line3": "and Craft."
+  },
+  "paragraphs": [
+    "I'm an ambitious and passionate developer with a strong interest in web development, game design, physics, and music. My journey started with curiosity about how things work — it grew into a commitment to building meaningful digital experiences.",
+    "A graduate of SMKN 2 Magelang (PPLG major), now working full-time at Reka Solusi Teknologi. I experiment daily with Next.js, Laravel, Flutter, Three.js, and anything that challenges me. When I'm not coding, I'm exploring game engines, thinking about physics, or listening to music."
+  ],
+  "infoCards": [
+    { "icon": "🎓", "label": "Graduated from", "value": "SMKN 2 Magelang · PPLG Major" },
+    { "icon": "💼", "label": "Working at", "value": "Reka Solusi Teknologi" },
+    { "icon": "📍", "label": "Location", "value": "Magelang, Central Java, Indonesia", "span": true }
+  ],
+  "interestBadges": [
+    "Game Engines",
+    "Physics",
+    "Music",
+    "Open Source",
+    "3D Graphics"
+  ]
+}

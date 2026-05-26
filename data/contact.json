@@ -1,0 +1,17 @@
+{
+  "sectionLabel": "Let's Connect",
+  "heading": "Got a project? Let's build something worth talking about.",
+  "body": "I'm always open to new opportunities, collaborations, and interesting conversations. Whether it's a web project, game concept, or just a chat about tech and physics — reach out!",
+  "email": "warid@al-warid.web.id",
+  "form": {
+    "title": "Drop a message",
+    "buttonLabel": "Send it →",
+    "toastMessage": "Message received! I'll get back to you soon. 👋",
+    "fields": [
+      { "id": "name", "label": "Name", "type": "text", "placeholder": "Your name", "halfWidth": true },
+      { "id": "email", "label": "Email", "type": "email", "placeholder": "your@email.com", "halfWidth": true },
+      { "id": "subject", "label": "Subject", "type": "text", "placeholder": "What's it about?" },
+      { "id": "message", "label": "Message", "type": "textarea", "placeholder": "Tell me about your project, idea, or just say hi...", "rows": 4 }
+    ]
+  }
+}

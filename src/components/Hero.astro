@@ -1,31 +1,35 @@
+---
+import hero from '../../data/hero.json';
+---
 <section id="home" class="min-h-[100svh] flex items-center bg-[var(--bg-base)] pt-16 overflow-hidden relative jp-grain">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] w-full">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- LEFT COLUMN — Text -->
       <div class="relative z-10">
-        <span class="jp-label" data-aos="fade-up" data-aos-delay="0">Full-stack & Game Developer</span>
+        <span class="jp-label" data-aos="fade-up" data-aos-delay="0">{hero.label}</span>
 
         <h1 class="font-display leading-[1.08] mb-5" style="font-size: clamp(2.8rem, 5vw, 4.5rem);" data-aos="fade-up" data-aos-delay="100">
-          <span class="font-light text-[var(--text-primary)] block">Guided by</span>
-          <span class="font-bold" style="color: var(--accent-sakura);">Passion.</span>
+          <span class="font-light text-[var(--text-primary)] block">{hero.headline.line1}</span>
+          <span class="font-bold" style="color: var(--accent-sakura);">{hero.headline.line2}</span>
         </h1>
 
         <p class="font-body font-light text-base text-[var(--text-secondary)] mb-8 max-w-[420px] leading-relaxed" data-aos="fade-up" data-aos-delay="300">
-          I build web apps, games, and digital experiences that actually work. Currently working at Reka Solusi Teknologi — shipping code that matters.
+          {hero.body}
         </p>
 
         <div class="flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="400">
-          <a href="#projects" class="jp-btn-primary">View my work</a>
-          <a href="https://github.com/Warid27" target="_blank" rel="noopener" class="jp-btn-outline">GitHub →</a>
+          {hero.cta.map(btn => (
+            btn.external
+              ? <a href={btn.href} target="_blank" rel="noopener" class="jp-btn-outline">{btn.label}</a>
+              : <a href={btn.href} class="jp-btn-primary">{btn.label}</a>
+          ))}
         </div>
       </div>
 
       <!-- RIGHT COLUMN — Illustration panel -->
       <div class="relative flex items-center justify-center" data-aos="fade-in" data-aos-delay="0" data-aos-duration="1200">
         <div class="relative w-full aspect-[5/4] max-w-[500px] overflow-hidden" style="border-radius: var(--radius-card);">
-          <!-- Painterly landscape illustration using SVG/CSS -->
           <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" style="animation: heroScale 1.2s ease-out;">
-            <!-- Sky gradient -->
             <defs>
               <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" style="stop-color:#F2D9C8;stop-opacity:1" />
@@ -41,26 +45,12 @@
                 <stop offset="100%" style="stop-color:#E8C9B5;stop-opacity:0.6" />
               </linearGradient>
             </defs>
-
-            <!-- Sky -->
             <rect width="500" height="400" fill="url(#sky)" />
-
-            <!-- Far mountain -->
             <path d="M0 280 L120 160 L240 280 Z" fill="#B8BEC5" opacity="0.6" />
-
-            <!-- Mid mountain -->
             <path d="M180 320 L320 140 L500 320 Z" fill="#C4A090" opacity="0.7" />
-
-            <!-- Near mountain / hill -->
             <path d="M50 350 L160 220 L300 350 Z" fill="#D4907A" opacity="0.7" />
-
-            <!-- Mist layer -->
             <rect x="0" y="220" width="500" height="180" fill="url(#mist)" />
-
-            <!-- Water reflection area -->
             <rect x="0" y="320" width="500" height="80" fill="url(#water)" opacity="0.5" />
-
-            <!-- Pagoda silhouette -->
             <g transform="translate(340, 175)" fill="#7A6358">
               <rect x="0" y="20" width="50" height="3" />
               <rect x="5" y="12" width="40" height="3" />
@@ -69,13 +59,10 @@
               <rect x="15" y="-12" width="20" height="3" />
               <rect x="20" y="20" width="10" height="60" />
             </g>
-
-            <!-- Sakura branches top-right -->
             <g transform="translate(320, 0)">
               <path d="M0 0 C20 10, 50 30, 100 20 C80 40, 60 60, 120 80" fill="none" stroke="#7A6358" stroke-width="3" opacity="0.6" />
               <path d="M50 10 C60 25, 70 25, 80 15" fill="none" stroke="#7A6358" stroke-width="2.5" opacity="0.5" />
               <path d="M90 45 C100 60, 110 65, 130 60" fill="none" stroke="#7A6358" stroke-width="2" opacity="0.4" />
-              <!-- Sakura blossoms -->
               <circle cx="60" cy="8" r="8" fill="#E8B4A4" opacity="0.7" />
               <circle cx="80" cy="12" r="6" fill="#D4907A" opacity="0.6" />
               <circle cx="100" cy="18" r="7" fill="#E8B4A4" opacity="0.5" />
@@ -83,8 +70,6 @@
               <circle cx="65" cy="22" r="4" fill="#E8B4A4" opacity="0.6" />
               <circle cx="95" cy="50" r="5" fill="#D4907A" opacity="0.4" />
             </g>
-
-            <!-- Foreground sakura branch (left top) -->
             <g transform="translate(-10, -10)">
               <path d="M10 10 C40 50, 100 40, 130 10" fill="none" stroke="#7A6358" stroke-width="3.5" opacity="0.5" />
               <path d="M50 30 C60 45, 65 50, 80 48" fill="none" stroke="#7A6358" stroke-width="2" opacity="0.4" />
@@ -102,10 +87,10 @@
     <div class="marquee-wrapper mt-12 -mx-[clamp(1.5rem,5vw,5rem)]" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div class="marquee-track py-3">
         <span class="font-body font-light text-[13px] tracking-[0.06em] text-[var(--text-secondary)] whitespace-nowrap uppercase">
-          Next.js &nbsp;·&nbsp; React &nbsp;·&nbsp; Vue &nbsp;·&nbsp; Flutter &nbsp;·&nbsp; Three.js &nbsp;·&nbsp; Laravel &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; Astro &nbsp;·&nbsp; Docker &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Cloudflare &nbsp;·&nbsp; TypeScript &nbsp;·
+          {hero.marquee.map((item, i) => (<>{i > 0 && ' · '}{item}{' '}</>))}
         </span>
         <span class="font-body font-light text-[13px] tracking-[0.06em] text-[var(--text-secondary)] whitespace-nowrap uppercase">
-          Next.js &nbsp;·&nbsp; React &nbsp;·&nbsp; Vue &nbsp;·&nbsp; Flutter &nbsp;·&nbsp; Three.js &nbsp;·&nbsp; Laravel &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; Astro &nbsp;·&nbsp; Docker &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Cloudflare &nbsp;·&nbsp; TypeScript &nbsp;·
+          {hero.marquee.map((item, i) => (<>{i > 0 && ' · '}{item}{' '}</>))}
         </span>
       </div>
     </div>

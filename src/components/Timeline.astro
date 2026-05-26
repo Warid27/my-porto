@@ -1,82 +1,49 @@
+---
+import timeline from '../../data/timeline.json';
+---
 <section id="timeline" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-base)]" style="border-top: 1px solid var(--border);">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
-    <!-- Header -->
     <div class="text-center mb-16" data-aos="fade-up">
-      <span class="jp-label">My Journey</span>
-      <h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">From curious kid to working developer.</h2>
+      <span class="jp-label">{timeline.sectionLabel}</span>
+      <h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">{timeline.heading}</h2>
     </div>
 
-    <!-- Timeline container -->
     <div class="relative">
       <div class="timeline-connector hidden lg:block"></div>
 
-      <!-- Entry 1 — 2025 (left) -->
-      <div class="relative flex flex-col lg:flex-row items-center mb-12" data-aos="fade-right">
-        <div class="hidden lg:block w-1/2"></div>
-        <div class="hidden lg:block timeline-dot"></div>
-        <div class="lg:w-1/2 lg:pl-12 w-full">
-          <div class="jp-card p-6">
-            <span class="jp-label mb-2">Present Role</span>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-body font-normal text-sm text-[var(--accent-sakura)]">2025</span>
-              <h3 class="font-body font-medium text-base text-[var(--text-primary)]">Reka Solusi Teknologi</h3>
+      {timeline.entries.map(entry => (
+        <div class={`relative flex flex-col lg:flex-row items-center ${entry !== timeline.entries[timeline.entries.length - 1] ? 'mb-12' : ''}`} data-aos={entry.side === 'left' ? 'fade-right' : 'fade-left'}>
+          {entry.side === 'left' && <div class="hidden lg:block w-1/2"></div>}
+          {entry.side === 'right' && (
+            <div class="lg:w-1/2 lg:pr-12 w-full">
+              <div class="jp-card p-6">
+                <span class="jp-label mb-2">{entry.label}</span>
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="font-body font-normal text-sm" style={`color: ${entry.accent};`}>{entry.year}</span>
+                  <h3 class="font-body font-medium text-base text-[var(--text-primary)]">{entry.title}</h3>
+                </div>
+                <p class="font-body font-normal text-sm text-[var(--text-secondary)] mb-2">{entry.role}</p>
+                <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">{entry.description}</p>
+              </div>
             </div>
-            <p class="font-body font-normal text-sm text-[var(--text-secondary)] mb-2">Full-time Developer</p>
-            <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">Building digital solutions for real clients. Taking what I learned into production every day.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Entry 2 — 2023 (right) -->
-      <div class="relative flex flex-col lg:flex-row items-center mb-12" data-aos="fade-left">
-        <div class="lg:w-1/2 lg:pr-12 w-full">
-          <div class="jp-card p-6">
-            <span class="jp-label mb-2">Past Role</span>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-body font-normal text-sm text-[var(--accent-stone)]">2023</span>
-              <h3 class="font-body font-medium text-base text-[var(--text-primary)]">PT Teknoreka Inovasi</h3>
+          )}
+          <div class="hidden lg:block timeline-dot"></div>
+          {entry.side === 'left' && (
+            <div class="lg:w-1/2 lg:pl-12 w-full">
+              <div class="jp-card p-6">
+                <span class="jp-label mb-2">{entry.label}</span>
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="font-body font-normal text-sm" style={`color: ${entry.accent};`}>{entry.year}</span>
+                  <h3 class="font-body font-medium text-base text-[var(--text-primary)]">{entry.title}</h3>
+                </div>
+                <p class="font-body font-normal text-sm text-[var(--text-secondary)] mb-2">{entry.role}</p>
+                <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">{entry.description}</p>
+              </div>
             </div>
-            <p class="font-body font-normal text-sm text-[var(--text-secondary)] mb-2">Internship — Web Developer</p>
-            <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">Applied web dev skills in a professional environment for the first time. Learned that real codebases have feelings.</p>
-          </div>
+          )}
+          {entry.side === 'right' && <div class="hidden lg:block w-1/2"></div>}
         </div>
-        <div class="hidden lg:block timeline-dot"></div>
-        <div class="hidden lg:block w-1/2"></div>
-      </div>
-
-      <!-- Entry 3 — 2022 (left) -->
-      <div class="relative flex flex-col lg:flex-row items-center mb-12" data-aos="fade-right">
-        <div class="hidden lg:block w-1/2"></div>
-        <div class="hidden lg:block timeline-dot"></div>
-        <div class="lg:w-1/2 lg:pl-12 w-full">
-          <div class="jp-card p-6">
-            <span class="jp-label mb-2">Education</span>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-body font-normal text-sm text-[var(--accent-moss)]">2022</span>
-              <h3 class="font-body font-medium text-base text-[var(--text-primary)]">SMKN 2 Kota Magelang</h3>
-            </div>
-            <p class="font-body font-normal text-sm text-[var(--text-secondary)] mb-2">Vocational High School · PPLG Major</p>
-            <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">Chose the software development major and never looked back. This is where the obsession became a career path.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Entry 4 — 2019 (right) -->
-      <div class="relative flex flex-col lg:flex-row items-center" data-aos="fade-left">
-        <div class="lg:w-1/2 lg:pr-12 w-full">
-          <div class="jp-card p-6">
-            <span class="jp-label mb-2">Education</span>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-body font-normal text-sm text-[var(--accent-sakura)]">2019</span>
-              <h3 class="font-body font-medium text-base text-[var(--text-primary)]">SMPN 1 Kota Magelang</h3>
-            </div>
-            <p class="font-body font-normal text-sm text-[var(--text-secondary)] mb-2">Junior High School</p>
-            <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">Where it all began. Discovered programming between physics homework and bad guitar solos.</p>
-          </div>
-        </div>
-        <div class="hidden lg:block timeline-dot"></div>
-        <div class="hidden lg:block w-1/2"></div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

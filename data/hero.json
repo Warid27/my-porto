@@ -1,0 +1,16 @@
+{
+  "label": "Full-stack & Game Developer",
+  "headline": {
+    "line1": "Guided by",
+    "line2": "Passion."
+  },
+  "body": "I build web apps, games, and digital experiences that actually work. Currently working at Reka Solusi Teknologi — shipping code that matters.",
+  "cta": [
+    { "label": "View my work", "href": "#projects", "style": "primary" },
+    { "label": "GitHub →", "href": "https://github.com/Warid27", "style": "outline", "external": true }
+  ],
+  "marquee": [
+    "Next.js", "React", "Vue", "Flutter", "Three.js", "Laravel",
+    "Node.js", "Astro", "Docker", "PostgreSQL", "Cloudflare", "TypeScript"
+  ]
+}

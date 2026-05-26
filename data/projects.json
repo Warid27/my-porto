@@ -1,0 +1,68 @@
+{
+  "sectionLabel": "Featured Projects",
+  "heading": "Things I've actually shipped.",
+  "subtext": "Real projects. Real URLs. Click to explore them live.",
+  "projects": [
+    {
+      "num": "01",
+      "name": "Pemiyos",
+      "url": "https://pemiyos.netlify.app/",
+      "tags": ["Web", "Full-stack", "Collaborative"],
+      "accent": "var(--accent-sakura)",
+      "featured": true,
+      "badge": "Most Contribution",
+      "description": "Full-featured collaborative web project — my most significant contribution to date. Showcases comprehensive full-stack web development skills across the entire project lifecycle.",
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23D4A892'/%3E%3Ccircle cx='200' cy='120' r='60' fill='%23C4B5A0' opacity='0.5'/%3E%3Crect x='80' y='200' width='240' height='4' rx='2' fill='%23E8D5B7' opacity='0.6'/%3E%3C/svg%3E"
+    },
+    {
+      "num": "02",
+      "name": "Saga Advisor",
+      "url": "https://saga-advisor.vercel.app/",
+      "tags": ["Next.js", "Vercel", "Web App"],
+      "accent": "var(--accent-stone)",
+      "featured": false,
+      "description": "Prototype professional web application built with Next.js. Clean architecture, modern UX patterns, and deployed to Vercel.",
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%238B9E7E'/%3E%3Ccircle cx='150' cy='130' r='50' fill='%239EB08C' opacity='0.5'/%3E%3Crect x='60' y='210' width='280' height='3' rx='1.5' fill='%23B0C0A0' opacity='0.6'/%3E%3C/svg%3E"
+    },
+    {
+      "num": "03",
+      "name": "LKS 2025",
+      "url": "https://lks-2025-warid.vercel.app/",
+      "tags": ["Game", "HTML/CSS/JS", "Competition"],
+      "accent": "var(--accent-sakura)",
+      "featured": false,
+      "description": "Browser-based Bomb It-style game built for national vocational skills competition (LKS). Fully playable, zero dependencies, pure HTML/CSS/JS.",
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23C4B5A0'/%3E%3Ccircle cx='250' cy='100' r='55' fill='%23D4A892' opacity='0.5'/%3E%3Crect x='80' y='190' width='240' height='3' rx='1.5' fill='%23D4C4B0' opacity='0.6'/%3E%3C/svg%3E"
+    },
+    {
+      "num": "04",
+      "name": "Chailly Bot",
+      "url": "https://chaillubot.vercel.app/",
+      "tags": ["AI", "Next.js", "Bot"],
+      "accent": "var(--accent-moss)",
+      "featured": false,
+      "description": "Interactive AI assistant bot with advanced conversational abilities and a clean, smooth interface. Built with Next.js.",
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23D4907A'/%3E%3Ccircle cx='200' cy='140' r='45' fill='%23E8B4A4' opacity='0.4'/%3E%3Crect x='100' y='220' width='200' height='3' rx='1.5' fill='%23E8C9B5' opacity='0.5'/%3E%3C/svg%3E"
+    },
+    {
+      "num": "05",
+      "name": "Crossy Road Three.js",
+      "url": "https://crossy-road-threejs-next.vercel.app/",
+      "tags": ["3D", "Three.js", "Next.js", "Game"],
+      "accent": "var(--accent-charcoal)",
+      "featured": false,
+      "description": "3D browser game recreating Crossy Road mechanics using Three.js and Next.js. Full 3D scene, collision detection, and score system.",
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%234A3C35'/%3E%3Ccircle cx='180' cy='110' r='50' fill='%236A5C55' opacity='0.5'/%3E%3Crect x='80' y='200' width='240' height='2' rx='1' fill='%237A6C65' opacity='0.5'/%3E%3C/svg%3E"
+    },
+    {
+      "num": "06",
+      "name": "Latihan LKS",
+      "url": "https://latihan-lks.vercel.app/",
+      "tags": ["Training", "Next.js", "Full-stack"],
+      "accent": "var(--accent-sand)",
+      "featured": false,
+      "description": "Full-stack training project built as competition preparation. End-to-end implementation with modern tooling and clean codebase.",
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23E8D5B7'/%3E%3Ccircle cx='220' cy='120' r='40' fill='%23D4A892' opacity='0.4'/%3E%3Crect x='100' y='210' width='200' height='3' rx='1.5' fill='%23C4B5A0' opacity='0.5'/%3E%3C/svg%3E"
+    }
+  ]
+}
