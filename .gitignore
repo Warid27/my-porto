@@ -7,6 +7,9 @@ dist/
 # Astro
 .astro/
 
+# Wrangler local state
+.wrangler/
+
 # Environment
 .env
 .env.*
@@ -25,7 +28,7 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
-pnpm-debug.log*
+bun-debug.log*
 
 # Qwen
 QWEN.md

@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://al-warid.web.id',
+  site: 'https://warid.web.id',
   base: '/',
   output: 'static',
   integrations: [tailwind(), icon()],
