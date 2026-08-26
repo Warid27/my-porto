@@ -1,53 +1,28 @@
 ---
 import site from '../../data/site.json';
 ---
-<nav id="navbar" class="fixed top-0 left-0 w-full z-50 h-16" style="background: rgba(245,239,230,0.85); backdrop-filter: blur(12px) saturate(1.4); -webkit-backdrop-filter: blur(12px) saturate(1.4); border-bottom: 1px solid var(--border); transition: background 300ms ease;">
+<nav id="navbar" aria-label="Primary navigation" class="fixed top-0 left-0 w-full z-50 h-16" style="background: rgba(245,239,230,0.85); backdrop-filter: blur(12px) saturate(1.4); -webkit-backdrop-filter: blur(12px) saturate(1.4); border-bottom: 1px solid var(--border); transition: background 300ms ease;">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] h-full flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#home" class="font-display font-semibold text-xl text-[var(--text-primary)] no-underline tracking-tight">
-      {site.shortName}<span style="color: var(--accent-sakura);">.</span>
-    </a>
-
-    <!-- Desktop nav links -->
+    <a href="#home" class="font-display font-semibold text-xl text-[var(--text-primary)] no-underline tracking-tight">{site.shortName}<span aria-hidden="true" style="color: var(--accent-sakura);">.</span></a>
     <div class="hidden lg:flex items-center gap-8">
-      {site.nav.map(link => (
-        <a href={link.href} class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">{link.label}</a>
-      ))}
+      {site.nav.map(link => <a href={link.href} class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">{link.label}</a>)}
       <a href={site.cta.href} class="jp-btn-primary text-sm" style="padding: 8px 20px;">{site.cta.label}</a>
     </div>
-
-    <!-- Hamburger (mobile only) -->
-    <button id="hamburger" class="lg:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1" aria-label="Open menu">
-      <span class="block w-6 h-[1.5px] bg-[var(--text-primary)] rounded-full"></span>
-      <span class="block w-6 h-[1.5px] bg-[var(--text-primary)] rounded-full"></span>
-      <span class="block w-4 h-[1.5px] bg-[var(--text-primary)] rounded-full ml-auto"></span>
+    <button id="hamburger" class="lg:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span aria-hidden="true" class="block w-6 h-[1.5px] bg-[var(--text-primary)] rounded-full"></span><span aria-hidden="true" class="block w-6 h-[1.5px] bg-[var(--text-primary)] rounded-full"></span><span aria-hidden="true" class="block w-4 h-[1.5px] bg-[var(--text-primary)] rounded-full ml-auto"></span>
     </button>
   </div>
 </nav>
-
-<!-- Mobile menu overlay -->
-<div id="mobile-menu">
+<div id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
   <button id="menu-close" class="absolute top-6 right-8 text-[var(--text-muted)] text-[40px] font-body font-light bg-transparent border-none cursor-pointer leading-none" aria-label="Close menu">&times;</button>
-  {site.nav.map(link => (
-    <a href={link.href} class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">{link.label}</a>
-  ))}
+  {site.nav.map(link => <a href={link.href} class="font-display text-5xl font-light text-[var(--text-primary)] no-underline">{link.label}</a>)}
 </div>
-
 <script>
   const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      nav.style.background = 'rgba(245,239,230,0.95)';
-    } else {
-      nav.style.background = 'rgba(245,239,230,0.85)';
-    }
-  });
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   const closeBtn = document.getElementById('menu-close');
-  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-  closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  mobileMenu.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'))
-  );
+  const setMenu = (open: boolean) => { mobileMenu?.classList.toggle('open', open); mobileMenu?.setAttribute('aria-hidden', String(!open)); hamburger?.setAttribute('aria-expanded', String(open)); hamburger?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); if (open) closeBtn?.focus(); else hamburger?.focus(); };
+  window.addEventListener('scroll', () => { if (nav) nav.style.background = window.scrollY > 80 ? 'rgba(245,239,230,0.95)' : 'rgba(245,239,230,0.85)'; }, { passive: true });
+  hamburger?.addEventListener('click', () => setMenu(true)); closeBtn?.addEventListener('click', () => setMenu(false)); mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false))); document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
 </script>

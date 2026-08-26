@@ -14,7 +14,7 @@
   /* Text */
   --text-primary:   #2C2420;
   --text-secondary: #7A6358;
-  --text-muted:     #B09080;
+  --text-muted:     #80665A;
   --text-inverse:   #F5EFE6;
 
   /* Accents */
@@ -283,4 +283,18 @@ body {
 }
 #mobile-menu.open {
   display: flex;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-sakura);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

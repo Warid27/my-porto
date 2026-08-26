@@ -4,39 +4,19 @@ import skills from '../../data/skills.json';
 ---
 <section id="skills" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-card)]">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
-    <div class="mb-12" data-aos="fade-up">
-      <span class="jp-label">{skills.sectionLabel}</span>
-      <h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">{skills.heading}</h2>
+    <div class="mb-12" data-aos="fade-up"><span class="jp-label">{skills.sectionLabel}</span><h2 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">{skills.heading}</h2></div>
+    <div class="flex flex-wrap border-b border-[var(--border)] mb-8" data-aos="fade-up" role="tablist" aria-label="Skill categories">
+      {skills.categories.map((cat, i) => <button id={`skill-tab-${cat.id}`} class="skill-tab" data-tab={cat.id} data-active={i === 0 ? 'true' : 'false'} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`skill-panel-${cat.id}`} tabindex={i === 0 ? 0 : -1}>{cat.label}</button>)}
     </div>
-
-    <div class="flex flex-wrap border-b border-[var(--border)] mb-8" data-aos="fade-up">
-      {skills.categories.map((cat, i) => (
-        <button class="skill-tab" data-tab={cat.id} data-active={i === 0 ? 'true' : 'false'}>{cat.label}</button>
-      ))}
-    </div>
-
     {skills.categories.map((cat, i) => (
-      <div class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab={cat.id} data-active={i === 0 ? 'true' : 'false'}>
-        {cat.items.map(item => (
-          <div class="jp-card p-5 flex flex-col items-start">
-            <Icon name={item.icon} class="w-8 h-8" style={`color: ${cat.accent};`} />
-            <h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">{item.name}</h3>
-            <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">{item.desc}</p>
-          </div>
-        ))}
+      <div id={`skill-panel-${cat.id}`} class="skill-panel grid grid-cols-2 md:grid-cols-3 gap-4" data-tab={cat.id} data-active={i === 0 ? 'true' : 'false'} role="tabpanel" aria-labelledby={`skill-tab-${cat.id}`} tabindex="0">
+        {cat.items.map(item => <div class="jp-card p-5 flex flex-col items-start"><Icon name={item.icon} aria-hidden="true" class="w-8 h-8" style={`color: ${cat.accent};`} /><h3 class="font-body font-normal text-sm text-[var(--text-primary)] mt-3">{item.name}</h3><p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed mt-1">{item.desc}</p></div>)}
       </div>
     ))}
   </div>
 </section>
-
 <script>
-  document.querySelectorAll('.skill-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.tab;
-      document.querySelectorAll('.skill-tab').forEach(t => t.dataset.active = 'false');
-      document.querySelectorAll('.skill-panel').forEach(p => p.dataset.active = 'false');
-      tab.dataset.active = 'true';
-      document.querySelector(`.skill-panel[data-tab="${target}"]`).dataset.active = 'true';
-    });
-  });
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.skill-tab')];
+  const selectTab = (tab: HTMLButtonElement) => { const target = tab.dataset.tab; const panel = target ? document.querySelector<HTMLElement>(`.skill-panel[data-tab="${target}"]`) : null; if (!panel) return; tabs.forEach(item => { const active = item === tab; item.dataset.active = String(active); item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; }); document.querySelectorAll<HTMLElement>('.skill-panel').forEach(item => item.dataset.active = 'false'); panel.dataset.active = 'true'; };
+  tabs.forEach((tab, index) => { tab.addEventListener('click', () => selectTab(tab)); tab.addEventListener('keydown', event => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return; event.preventDefault(); const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; tabs[next]?.focus(); selectTab(tabs[next]); }); });
 </script>

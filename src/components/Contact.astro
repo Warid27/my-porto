@@ -6,67 +6,51 @@ import contact from '../../data/contact.json';
 <section id="contact" class="py-[clamp(4rem,8vw,8rem)] bg-[var(--bg-card)]">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-      <!-- LEFT — Info + social -->
       <div data-aos="fade-right">
         <span class="jp-label">{contact.sectionLabel}</span>
         <h2 class="jp-heading mb-4" style="font-size: clamp(2rem, 3.5vw, 2.25rem);">{contact.heading}</h2>
         <p class="font-body font-light text-[15px] text-[var(--text-secondary)] mb-8 leading-relaxed">{contact.body}</p>
-
         <div class="space-y-3 mb-6">
           {site.social.map(link => (
-            <a href={link.url} target="_blank" rel="noopener" class="jp-card p-4 flex items-center gap-4 no-underline group">
-              <Icon name={link.icon} class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-sakura)] transition-colors" />
+            <a href={link.url} target="_blank" rel="noopener noreferrer" class="jp-card p-4 flex items-center gap-4 no-underline group">
+              <Icon name={link.icon} aria-hidden="true" class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-sakura)] transition-colors" />
               <span class="font-body font-normal text-sm text-[var(--text-primary)]">{link.platform}</span>
-              <span class="font-body font-light text-sm text-[var(--text-muted)]">{link.handle}</span>
-              <span class="ml-auto font-body text-[var(--text-muted)] group-hover:text-[var(--accent-sakura)] transition-colors">→</span>
+              <span class="font-body font-light text-sm text-[var(--text-secondary)]">{link.handle}</span>
+              <span aria-hidden="true" class="ml-auto font-body text-[var(--text-secondary)] group-hover:text-[var(--accent-sakura)] transition-colors">→</span>
             </a>
           ))}
         </div>
-
-        <p class="font-body font-light text-sm text-[var(--text-muted)]">📧 {contact.email}</p>
+        <a href={`mailto:${contact.email}`} class="font-body font-light text-sm text-[var(--text-secondary)] hover:text-[var(--accent-sakura)] transition-colors">{contact.email}</a>
       </div>
-
-      <!-- RIGHT — Contact form -->
       <div data-aos="fade-left">
         <div class="jp-card p-8 bg-[var(--bg-base)]">
           <h3 class="font-body font-medium text-lg text-[var(--text-primary)] mb-6">{contact.form.title}</h3>
-          <form class="flex flex-col gap-5">
+          <form class="flex flex-col gap-5" action={`mailto:${contact.email}`} method="post" enctype="text/plain">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contact.form.fields.filter(f => f.halfWidth).map(field => (
                 <div>
                   <label class="jp-label" for={field.id}>{field.label}</label>
-                  <input type={field.type} id={field.id} class="jp-input" placeholder={field.placeholder} />
+                  <input type={field.type} id={field.id} name={field.id} class="jp-input" placeholder={field.placeholder} required autocomplete={field.type === 'email' ? 'email' : field.id === 'name' ? 'name' : undefined} />
                 </div>
               ))}
             </div>
             {contact.form.fields.filter(f => !f.halfWidth && f.type !== 'textarea').map(field => (
               <div>
                 <label class="jp-label" for={field.id}>{field.label}</label>
-                <input type={field.type} id={field.id} class="jp-input" placeholder={field.placeholder} />
+                <input type={field.type} id={field.id} name={field.id} class="jp-input" placeholder={field.placeholder} required />
               </div>
             ))}
             {contact.form.fields.filter(f => f.type === 'textarea').map(field => (
               <div>
                 <label class="jp-label" for={field.id}>{field.label}</label>
-                <textarea id={field.id} rows={field.rows || 4} class="jp-input resize-none" placeholder={field.placeholder}></textarea>
+                <textarea id={field.id} name={field.id} rows={field.rows || 4} class="jp-input resize-none" placeholder={field.placeholder} required minlength="20"></textarea>
               </div>
             ))}
-            <button type="button" class="jp-btn-primary w-full justify-center" id="send-btn">{contact.form.buttonLabel}</button>
+            <p class="font-body text-xs text-[var(--text-secondary)]">Submitting opens your email client. Prefer email? Use address at left.</p>
+            <button type="submit" class="jp-btn-primary w-full justify-center">{contact.form.buttonLabel}</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-
-  <div id="toast" class="hidden fixed bottom-6 right-6 z-[200] px-5 py-3 font-body font-normal text-sm" style="background: var(--accent-sakura); color: var(--bg-base); border-radius: var(--radius-card); box-shadow: var(--shadow-card);">
-    {contact.form.toastMessage}
-  </div>
 </section>
-
-<script>
-  document.getElementById('send-btn')?.addEventListener('click', () => {
-    const toast = document.getElementById('toast');
-    toast.classList.remove('hidden');
-    setTimeout(() => toast.classList.add('hidden'), 4000);
-  });
-</script>

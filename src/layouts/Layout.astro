@@ -20,9 +20,21 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={site.domain} />
-  <title>{title}</title>
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="canonical" href={site.domain} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: title,
+    description,
+    url: site.domain,
+    mainEntity: { '@type': 'Person', name: site.name, url: site.domain, sameAs: site.social.map(link => link.url) }
+  })} />
 </head>
 <body>
   <slot />
