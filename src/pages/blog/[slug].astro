@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import Contact from '../../components/Contact.astro';
 import blog from '../../../data/blog.json';
 
 // Menghasilkan URL dinamis untuk setiap post di data/blog.json
@@ -15,37 +16,42 @@ export function getStaticPaths() {
 const { post } = Astro.props;
 const pubDate = new Date(post.pubDate);
 ---
-<Layout title={`${post.title} | Warid`} description={post.description}>
+<Layout title={`${post.title} | Warid`} description={post.description} bodyClass="jp-blog">
   <Navbar />
-  <article class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[720px] mx-auto px-6">
-    <header class="mb-10" data-aos="fade-up">
-      <a href="/blog/" class="font-body font-light text-sm text-[var(--text-secondary)] hover:text-[var(--accent-sakura)] transition-colors no-underline">← Kembali ke semua tulisan</a>
-      <h1 class="jp-heading text-4xl md:text-5xl mt-6 mb-4">{post.title}</h1>
-      <time class="font-body font-light text-sm text-[var(--text-muted)]" datetime={post.pubDate}>
-        {pubDate.toLocaleDateString('id-ID', {
-          year: 'numeric', month: 'long', day: 'numeric'
-        })}
-      </time>
-      {post.tags.length > 0 && (
-        <div class="mt-4 flex flex-wrap gap-2">
-          {post.tags.map(tag => (
-            <span class="jp-tag">{tag}</span>
-          ))}
+  <main class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(4rem,8vw,6rem)]">
+    <article class="max-w-[700px] mx-auto px-6">
+      <header data-aos="fade-up">
+        <a href="/blog/" class="blog-back">
+          <span class="blog-back-arrow" aria-hidden="true">&larr;</span>
+          <span>Kembali ke semua tulisan</span>
+        </a>
+        <h1 class="blog-title blog-title--post mt-8 mb-7">{post.title}</h1>
+        <div class="flex flex-wrap items-center gap-2">
+          <time class="blog-pill blog-pill--date" datetime={post.pubDate}>
+            {pubDate.toLocaleDateString('id-ID', {
+              year: 'numeric', month: 'long', day: 'numeric'
+            })}
+          </time>
+          {post.tags.map(tag => <span class="blog-pill">{tag}</span>)}
         </div>
-      )}
-    </header>
+        {post.description && <p class="blog-lede mt-8">{post.description}</p>}
+      </header>
 
-    <div class="font-body font-light text-[16px] text-[var(--text-primary)] leading-[1.85] space-y-6" data-aos="fade-up" data-aos-delay="100">
-      {post.content.map(paragraph => (
-        <p>{paragraph}</p>
-      ))}
-    </div>
+      <div class="blog-prose mt-10" data-aos="fade-up" data-aos-delay="100">
+        {post.content.map(paragraph => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
 
-    <footer class="mt-16 pt-8" style="border-top: 1px solid var(--border);">
-      <p class="font-body font-light text-sm text-[var(--text-secondary)]">
-        Ada tanggapan atau ingin diskusi? <a href="/#contact" class="text-[var(--accent-sakura)] no-underline hover:underline">Hubungi saya →</a>
-      </p>
-    </footer>
-  </article>
+      <div class="blog-end" aria-hidden="true">&middot;&middot;&middot;</div>
+
+      <footer class="blog-article-footer">
+        <p>
+          Ada tanggapan atau ingin diskusi? <a href="#contact">Hubungi saya &rarr;</a>
+        </p>
+      </footer>
+    </article>
+  </main>
+  <Contact />
   <Footer />
 </Layout>

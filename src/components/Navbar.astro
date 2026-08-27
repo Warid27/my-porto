@@ -3,7 +3,7 @@ import site from '../../data/site.json';
 ---
 <nav id="navbar" aria-label="Primary navigation" class="fixed top-0 left-0 w-full z-50 h-16" style="background: rgba(245,239,230,0.85); backdrop-filter: blur(12px) saturate(1.4); -webkit-backdrop-filter: blur(12px) saturate(1.4); border-bottom: 1px solid var(--border); transition: background 300ms ease;">
   <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] h-full flex items-center justify-between">
-    <a href="#home" class="font-display font-semibold text-xl text-[var(--text-primary)] no-underline tracking-tight">{site.shortName}<span aria-hidden="true" style="color: var(--accent-sakura);">.</span></a>
+    <a href="/#home" class="font-display font-semibold text-xl text-[var(--text-primary)] no-underline tracking-tight">{site.shortName}<span aria-hidden="true" style="color: var(--accent-sakura);">.</span></a>
     <div class="hidden lg:flex items-center gap-8">
       {site.nav.map(link => <a href={link.href} class="jp-nav-link font-body font-normal text-sm text-[var(--text-secondary)]">{link.label}</a>)}
       <a href={site.cta.href} class="jp-btn-primary text-sm" style="padding: 8px 20px;">{site.cta.label}</a>

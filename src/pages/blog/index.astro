@@ -7,31 +7,33 @@ import blog from '../../../data/blog.json';
 // Urutkan dari yang terbaru
 const posts = [...blog.posts].sort((a, b) => +new Date(b.pubDate) - +new Date(a.pubDate));
 ---
-<Layout title="Blog | Warid" description={blog.body}>
+<Layout title="Blog | Warid" description={blog.body} bodyClass="jp-blog">
   <Navbar />
-  <main class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[800px] mx-auto px-6">
-    <div class="mb-12" data-aos="fade-up">
-      <span class="jp-label">{blog.sectionLabel}</span>
-      <h1 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">{blog.heading}</h1>
-      <p class="font-body font-light text-sm text-[var(--text-muted)] mt-2">{blog.body}</p>
-    </div>
-    <div class="space-y-6">
-      {posts.map((post, i) => (
-        <a href={`/blog/${post.slug}/`} class="block jp-card p-6 no-underline hover:border-[var(--accent-sakura)] group" data-aos="fade-up" data-aos-delay={i * 80}>
-          <h2 class="font-display text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-sakura)] transition-colors">
-            {post.title}
-          </h2>
-          <p class="font-body font-light text-sm text-[var(--text-muted)] mt-2 leading-relaxed">{post.description}</p>
-          <div class="flex flex-wrap items-center gap-2 mt-4">
-            <time class="font-body text-xs text-[var(--text-secondary)]" datetime={post.pubDate}>
-              {new Date(post.pubDate).toLocaleDateString('id-ID', {
-                year: 'numeric', month: 'long', day: 'numeric'
-              })}
-            </time>
-            {post.tags.map(tag => <span class="jp-tag">{tag}</span>)}
-          </div>
-        </a>
-      ))}
+  <main class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(5rem,10vw,8rem)]">
+    <div class="max-w-[760px] mx-auto px-6">
+      <header class="mb-[clamp(3rem,6vw,4.5rem)]" data-aos="fade-up">
+        <span class="jp-label">{blog.sectionLabel}</span>
+        <h1 class="blog-title blog-title--page">{blog.heading}</h1>
+        <p class="blog-intro">{blog.body}</p>
+        <div class="blog-rule" aria-hidden="true"></div>
+      </header>
+
+      <div class="space-y-8">
+        {posts.map((post, i) => (
+          <a href={`/blog/${post.slug}/`} class="blog-card p-6 sm:p-8" data-aos="fade-up" data-aos-delay={i * 70}>
+            <h2 class="blog-card-title">{post.title}</h2>
+            <p class="blog-card-desc">{post.description}</p>
+            <div class="flex flex-wrap items-center gap-2 mt-6">
+              <time class="blog-pill blog-pill--date" datetime={post.pubDate}>
+                {new Date(post.pubDate).toLocaleDateString('id-ID', {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}
+              </time>
+              {post.tags.map(tag => <span class="blog-pill">{tag}</span>)}
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </main>
   <Footer />

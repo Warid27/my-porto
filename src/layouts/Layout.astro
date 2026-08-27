@@ -1,13 +1,16 @@
 ---
 import site from '../../data/site.json';
+import '../styles/global.css';
 
 export interface Props {
   title?: string;
   description?: string;
+  bodyClass?: string;
 }
 const {
   title = site.title,
   description = site.description,
+  bodyClass,
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -36,7 +39,7 @@ const {
     mainEntity: { '@type': 'Person', name: site.name, url: site.domain, sameAs: site.social.map(link => link.url) }
   })} />
 </head>
-<body>
+<body class={bodyClass}>
   <slot />
   <script>
     import AOS from 'aos';
