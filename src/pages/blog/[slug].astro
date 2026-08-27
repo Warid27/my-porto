@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Menghasilkan URL dinamis untuk setiap file .mdx
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} | Warid`}>
+  <article class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[800px] mx-auto px-6 prose prose-stone lg:prose-lg prose-headings:font-heading prose-a:text-[var(--accent-sakura)]">
+    <header class="mb-10">
+      <h1 class="jp-heading text-4xl md:text-5xl mb-4">{post.data.title}</h1>
+      <time class="text-sm text-[var(--text-muted)]">
+        {post.data.pubDate.toLocaleDateString('id-ID', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        })}
+      </time>
+      {post.data.tags.length > 0 && (
+        <div class="mt-4 flex gap-2">
+          {post.data.tags.map(tag => (
+            <span class="jp-tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+    
+    <div class="mt-8 font-body font-light text-[var(--text-primary)]">
+      <!-- Merender isi markdown -->
+      <Content />
+    </div>
+  </article>
+</Layout>

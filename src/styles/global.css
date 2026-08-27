@@ -28,7 +28,7 @@
   --border:         rgba(44, 36, 32, 0.12);
   --border-strong:  rgba(44, 36, 32, 0.25);
   --shadow-soft:    0 2px 16px rgba(44, 36, 32, 0.08);
-  --shadow-card:    0 4px 24px rgba(44, 36, 32, 0.10);
+  --shadow-card:    0 4px 24px rgba(74, 60, 53, 0.08);
   --radius-card:    12px;
   --radius-btn:     6px;
   --radius-chip:    4px;
@@ -52,6 +52,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ---- AOS FALLBACK (Prevent CLS / FOUC) ---- */
+html:not(.no-js) [data-aos] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+html:not(.no-js) [data-aos].aos-animate {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ---- JAPANDI UTILITIES ---- */
 
 .jp-card {
@@ -66,48 +77,14 @@ body {
   box-shadow: var(--shadow-card);
 }
 
-.jp-btn-primary {
-  background: var(--accent-charcoal);
-  color: var(--text-inverse);
-  padding: 12px 28px;
-  border-radius: var(--radius-btn);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.03em;
-  border: none;
-  cursor: pointer;
-  transition: background 200ms, transform 150ms;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-.jp-btn-primary:hover {
-  background: var(--accent-sakura);
-  transform: translateY(-2px);
-}
-
-.jp-btn-outline {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1.5px solid var(--border-strong);
-  padding: 11px 26px;
-  border-radius: var(--radius-btn);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  transition: border-color 200ms, color 200ms;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-.jp-btn-outline:hover {
-  border-color: var(--accent-sakura);
-  color: var(--accent-sakura);
+@layer components {
+  .jp-btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#4A3C35] text-[#F5EFE6] font-medium text-sm tracking-wide transition-all duration-200 hover:bg-[#D4907A] hover:-translate-y-0.5 no-underline cursor-pointer;
+  }
+  
+  .jp-btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-transparent text-[#2C2420] border-2 border-[#2C2420]/25 font-medium text-sm tracking-wide transition-all duration-200 hover:border-[#D4907A] hover:text-[#D4907A] no-underline cursor-pointer;
+  }
 }
 
 .jp-label {
@@ -179,7 +156,7 @@ body {
   border: none;
   border-bottom: 1px solid var(--border-strong);
   border-radius: 0;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0.75rem 0;
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;

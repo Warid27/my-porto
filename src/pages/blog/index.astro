@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Mengambil semua post yang bukan draft dan mengurutkan dari yang terbaru
+const posts = (await getCollection('blog'))
+  .filter(post => !post.data.isDraft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog | Warid">
+  <main class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[800px] mx-auto px-6">
+    <h1 class="jp-heading text-4xl mb-8">Tulisan & Pemikiran</h1>
+    <div class="space-y-6">
+      {posts.map((post) => (
+        <a href={`/blog/${post.slug}/`} class="block jp-card p-6 no-underline hover:border-[var(--accent-sakura)] group">
+          <h2 class="text-xl font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-sakura)] transition-colors">
+            {post.data.title}
+          </h2>
+          <p class="text-sm text-[var(--text-muted)] mt-2">{post.data.description}</p>
+          <time class="text-xs text-[var(--text-secondary)] mt-4 block">
+            {post.data.pubDate.toLocaleDateString('id-ID', {
+              year: 'numeric', month: 'long', day: 'numeric'
+            })}
+          </time>
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>

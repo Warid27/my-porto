@@ -7,14 +7,14 @@
       "label": "Frontend",
       "accent": "var(--accent-sakura)",
       "items": [
-        { "icon": "lucide:monitor", "name": "Next.js", "desc": "React framework for production" },
-        { "icon": "lucide:component", "name": "React", "desc": "UI component library" },
-        { "icon": "lucide:layout", "name": "Vue.js", "desc": "Progressive JS framework" },
-        { "icon": "lucide:rocket", "name": "Astro", "desc": "Content-first static sites" },
-        { "icon": "lucide:smartphone", "name": "Flutter", "desc": "Cross-platform UI toolkit" },
-        { "icon": "lucide:box", "name": "Three.js", "desc": "3D graphics in browser" },
-        { "icon": "lucide:palette", "name": "Tailwind CSS", "desc": "Utility-first styling" },
-        { "icon": "lucide:braces", "name": "TypeScript", "desc": "Typed JavaScript" }
+        { "icon": "simple-icons:nextdotjs", "name": "Next.js", "desc": "React framework for production" },
+        { "icon": "simple-icons:react", "name": "React", "desc": "UI component library" },
+        { "icon": "simple-icons:vuedotjs", "name": "Vue.js", "desc": "Progressive JS framework" },
+        { "icon": "simple-icons:astro", "name": "Astro", "desc": "Content-first static sites" },
+        { "icon": "simple-icons:flutter", "name": "Flutter", "desc": "Cross-platform UI toolkit" },
+        { "icon": "simple-icons:threedotjs", "name": "Three.js", "desc": "3D graphics in browser" },
+        { "icon": "simple-icons:tailwindcss", "name": "Tailwind CSS", "desc": "Utility-first styling" },
+        { "icon": "simple-icons:typescript", "name": "TypeScript", "desc": "Typed JavaScript" }
       ]
     },
     {
@@ -22,13 +22,13 @@
       "label": "Backend",
       "accent": "var(--accent-moss)",
       "items": [
-        { "icon": "lucide:server", "name": "Node.js", "desc": "JS runtime for servers" },
-        { "icon": "lucide:network", "name": "Express", "desc": "Minimal web framework" },
-        { "icon": "lucide:shell", "name": "Laravel", "desc": "PHP web framework" },
-        { "icon": "lucide:terminal", "name": "Python", "desc": "Scripting & automation" },
-        { "icon": "lucide:code-2", "name": "Dart", "desc": "Language behind Flutter" },
-        { "icon": "lucide:layers", "name": "C#", "desc": "Games & .NET apps" },
-        { "icon": "lucide:file-code", "name": "JavaScript", "desc": "Language of the web" }
+        { "icon": "simple-icons:nodedotjs", "name": "Node.js", "desc": "JS runtime for servers" },
+        { "icon": "simple-icons:express", "name": "Express", "desc": "Minimal web framework" },
+        { "icon": "simple-icons:laravel", "name": "Laravel", "desc": "PHP web framework" },
+        { "icon": "simple-icons:python", "name": "Python", "desc": "Scripting & automation" },
+        { "icon": "simple-icons:dart", "name": "Dart", "desc": "Language behind Flutter" },
+        { "icon": "simple-icons:csharp", "name": "C#", "desc": "Games & .NET apps" },
+        { "icon": "simple-icons:javascript", "name": "JavaScript", "desc": "Language of the web" }
       ]
     },
     {
@@ -36,10 +36,10 @@
       "label": "Database",
       "accent": "var(--accent-sakura)",
       "items": [
-        { "icon": "lucide:database", "name": "PostgreSQL", "desc": "Relational SQL database" },
-        { "icon": "lucide:database-backup", "name": "MySQL", "desc": "Widely-used SQL DB" },
-        { "icon": "lucide:folder-tree", "name": "MongoDB", "desc": "NoSQL document store" },
-        { "icon": "lucide:cloud", "name": "Supabase", "desc": "Open-source Firebase alt" }
+        { "icon": "simple-icons:postgresql", "name": "PostgreSQL", "desc": "Relational SQL database" },
+        { "icon": "simple-icons:mysql", "name": "MySQL", "desc": "Widely-used SQL DB" },
+        { "icon": "simple-icons:mongodb", "name": "MongoDB", "desc": "NoSQL document store" },
+        { "icon": "simple-icons:supabase", "name": "Supabase", "desc": "Open-source Firebase alt" }
       ]
     },
     {
@@ -47,12 +47,12 @@
       "label": "DevOps",
       "accent": "var(--accent-charcoal)",
       "items": [
-        { "icon": "lucide:container", "name": "Docker", "desc": "Container runtime" },
-        { "icon": "lucide:globe", "name": "Vercel", "desc": "Serverless deployment" },
-        { "icon": "lucide:upload-cloud", "name": "Netlify", "desc": "JAMstack hosting" },
-        { "icon": "lucide:git-branch", "name": "GitHub", "desc": "Version control & CI/CD" },
-        { "icon": "lucide:shield", "name": "Cloudflare", "desc": "CDN, DNS & security" },
-        { "icon": "lucide:hard-drive", "name": "Linux / VPS", "desc": "Self-hosted environments" }
+        { "icon": "simple-icons:docker", "name": "Docker", "desc": "Container runtime" },
+        { "icon": "simple-icons:vercel", "name": "Vercel", "desc": "Serverless deployment" },
+        { "icon": "simple-icons:netlify", "name": "Netlify", "desc": "JAMstack hosting" },
+        { "icon": "simple-icons:github", "name": "GitHub", "desc": "Version control & CI/CD" },
+        { "icon": "simple-icons:cloudflare", "name": "Cloudflare", "desc": "CDN, DNS & security" },
+        { "icon": "simple-icons:linux", "name": "Linux / VPS", "desc": "Self-hosted environments" }
       ]
     },
     {
@@ -60,10 +60,10 @@
       "label": "Other",
       "accent": "var(--accent-stone)",
       "items": [
-        { "icon": "lucide:git-merge", "name": "Git", "desc": "Version control" },
-        { "icon": "lucide:pen-tool", "name": "Figma", "desc": "UI/UX design" },
-        { "icon": "lucide:pencil", "name": "VS Code", "desc": "Primary editor" },
-        { "icon": "lucide:box", "name": "Three.js", "desc": "3D graphics in browser" }
+        { "icon": "simple-icons:git", "name": "Git", "desc": "Version control" },
+        { "icon": "simple-icons:figma", "name": "Figma", "desc": "UI/UX design" },
+        { "icon": "simple-icons:visualstudiocode", "name": "VS Code", "desc": "Primary editor" },
+        { "icon": "simple-icons:threedotjs", "name": "Three.js", "desc": "3D graphics in browser" }
       ]
     }
   ]
