@@ -54,10 +54,19 @@ const { image, loading = 'lazy', class: className, ...rest } = Astro.props;
       />
       <circle cx="1085" cy="418" r="9" fill="#A89F94" />
 
-      <!-- Daun -->
-      <path d="M700 552 Q 664 522 690 492 Q 728 512 700 552 Z" fill="#A89F94" opacity="0.9" />
-      <path d="M865 484 Q 900 456 874 422 Q 834 444 865 484 Z" fill="#A89F94" opacity="0.72" />
-      <path d="M990 434 Q 956 402 984 374 Q 1020 400 990 434 Z" fill="#A89F94" opacity="0.85" />
+      <!-- Daun (Leaves) dengan urat daun supaya lebih jelas -->
+      <g opacity="0.9">
+        <path d="M 680 545 C 640 510, 630 460, 660 440 C 690 460, 690 510, 680 545 Z" fill="#A89F94" />
+        <path d="M 680 545 Q 665 500 660 440" fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+      </g>
+      <g opacity="0.75">
+        <path d="M 840 480 C 880 470, 920 440, 910 400 C 880 410, 850 440, 840 480 Z" fill="#A89F94" />
+        <path d="M 840 480 Q 880 440 910 400" fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+      </g>
+      <g opacity="0.85">
+        <path d="M 980 435 C 960 390, 965 350, 990 330 C 1010 360, 1000 400, 980 435 Z" fill="#A89F94" />
+        <path d="M 980 435 Q 980 380 990 330" fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+      </g>
 
       <!-- Batu kecil di garis tanah -->
       <ellipse cx="560" cy="640" rx="54" ry="15" fill="#C4B9A9" opacity="0.45" />
