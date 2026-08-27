@@ -15,6 +15,10 @@ interface Props {
 }
 
 const { image, loading = 'lazy', class: className, ...rest } = Astro.props;
+
+// ID unik per instance — blog index me-render beberapa cover di satu halaman,
+// jadi id <defs> tidak boleh duplikat.
+const leafId = `jp-leaf-${Math.random().toString(36).slice(2, 8)}`;
 ---
 <figure class:list={['blog-cover', className]} {...rest}>
   {image?.url ? (
@@ -52,21 +56,28 @@ const { image, loading = 'lazy', class: className, ...rest } = Astro.props;
         stroke-width="7"
         stroke-linecap="round"
       />
-      <circle cx="1085" cy="418" r="9" fill="#A89F94" />
+      <circle cx="1085" cy="418" r="9" fill="#8B9E7E" opacity="0.9" />
 
-      <!-- Daun (Leaves) dengan urat daun supaya lebih jelas -->
-      <g opacity="0.9">
-        <path d="M 680 545 C 640 510, 630 460, 660 440 C 690 460, 690 510, 680 545 Z" fill="#A89F94" />
-        <path d="M 680 545 Q 665 500 660 440" fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5" />
-      </g>
-      <g opacity="0.75">
-        <path d="M 840 480 C 880 470, 920 440, 910 400 C 880 410, 850 440, 840 480 Z" fill="#A89F94" />
-        <path d="M 840 480 Q 880 440 910 400" fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5" />
-      </g>
-      <g opacity="0.85">
-        <path d="M 980 435 C 960 390, 965 350, 990 330 C 1010 360, 1000 400, 980 435 Z" fill="#A89F94" />
-        <path d="M 980 435 Q 980 380 990 330" fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5" />
-      </g>
+      <!-- Daun — bentuk lanset runcing, urat daun jelas, hijau sage lembut -->
+      <defs>
+        <g id={leafId}>
+          <path
+            d="M 0 0 C -9 -16, -31 -38, -33 -70 C -35 -102, -17 -121, 0 -132 C 17 -121, 35 -102, 33 -70 C 31 -38, 9 -16, 0 0 Z"
+            fill="#8B9E7E"
+          />
+          <path
+            d="M 0 -6 C 1 -46, 1 -88, 0 -127"
+            fill="none" stroke="#EFE9E0" stroke-width="3" stroke-linecap="round" opacity="0.55"
+          />
+          <path
+            d="M 0 -48 Q -10 -52, -16 -63 M 0 -48 Q 10 -52, 16 -63 M 0 -84 Q -8 -88, -12 -97 M 0 -84 Q 8 -88, 12 -97"
+            fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.45"
+          />
+        </g>
+      </defs>
+      <use href={`#${leafId}`} transform="translate(665 563) rotate(-55) scale(1.15)" opacity="0.95" />
+      <use href={`#${leafId}`} transform="translate(799 510) rotate(50)" opacity="0.78" />
+      <use href={`#${leafId}`} transform="translate(940 461) rotate(-45) scale(0.9)" opacity="0.88" />
 
       <!-- Batu kecil di garis tanah -->
       <ellipse cx="560" cy="640" rx="54" ry="15" fill="#C4B9A9" opacity="0.45" />
