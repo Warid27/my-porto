@@ -485,6 +485,26 @@ html:not(.no-js) [data-aos].aos-animate {
   margin-top: 2.25rem;
 }
 
+/* Cover gambar — dipakai di kartu index & hero post */
+.blog-cover {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--blog-border);
+  background: var(--blog-card);
+}
+.blog-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.blog-cover-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 /* Hero image — soft frame, slightly elevated */
 .blog-hero {
   margin-top: 3rem;

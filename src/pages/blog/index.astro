@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import BlogCover from '../../components/BlogCover.astro';
 import blog from '../../../data/blog.json';
 
 // Urutkan dari yang terbaru
@@ -21,6 +22,7 @@ const posts = [...blog.posts].sort((a, b) => +new Date(b.pubDate) - +new Date(a.
       <div class="space-y-8">
         {posts.map((post, i) => (
           <a href={`/blog/${post.slug}/`} class="blog-card p-6 sm:p-8" data-aos="fade-up" data-aos-delay={i * 70}>
+            <BlogCover image={post.image} class="mb-7" />
             <h2 class="blog-card-title">{post.title}</h2>
             <p class="blog-card-desc">{post.description}</p>
             <div class="flex flex-wrap items-center gap-2 mt-6">

@@ -1,0 +1,68 @@
+---
+// Cover gambar untuk blog — dipakai di kartu index & hero post.
+// Kalau post tidak punya gambar (atau url-nya kosong), render placeholder
+// SVG japandi inline: tanpa CDN eksternal, tanpa request jaringan.
+interface BlogImage {
+  url: string;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  image?: BlogImage;
+  loading?: 'eager' | 'lazy';
+  class?: string;
+}
+
+const { image, loading = 'lazy', class: className, ...rest } = Astro.props;
+---
+<figure class:list={['blog-cover', className]} {...rest}>
+  {image?.url ? (
+    <img src={image.url} alt={image.alt ?? ''} loading={loading} decoding="async" />
+  ) : (
+    <svg
+      class="blog-cover-art"
+      viewBox="0 0 1600 900"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <!-- Langit & tanah -->
+      <rect width="1600" height="900" fill="#EFE9E0" />
+      <rect y="648" width="1600" height="252" fill="#E8E0D5" />
+
+      <!-- Enso — kuas lingkaran yang tidak menutup sempurna -->
+      <circle
+        cx="820"
+        cy="405"
+        r="235"
+        fill="none"
+        stroke="#C4B9A9"
+        stroke-width="13"
+        stroke-linecap="round"
+        stroke-dasharray="1300 176.5"
+        transform="rotate(115 820 405)"
+      />
+
+      <!-- Ranting yang menembus enso -->
+      <path
+        d="M540 618 C 700 545, 890 470, 1085 418"
+        fill="none"
+        stroke="#A89F94"
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+      <circle cx="1085" cy="418" r="9" fill="#A89F94" />
+
+      <!-- Daun -->
+      <path d="M700 552 Q 664 522 690 492 Q 728 512 700 552 Z" fill="#A89F94" opacity="0.9" />
+      <path d="M865 484 Q 900 456 874 422 Q 834 444 865 484 Z" fill="#A89F94" opacity="0.72" />
+      <path d="M990 434 Q 956 402 984 374 Q 1020 400 990 434 Z" fill="#A89F94" opacity="0.85" />
+
+      <!-- Batu kecil di garis tanah -->
+      <ellipse cx="560" cy="640" rx="54" ry="15" fill="#C4B9A9" opacity="0.45" />
+      <ellipse cx="1150" cy="650" rx="34" ry="10" fill="#C4B9A9" opacity="0.35" />
+    </svg>
+  )}
+  {image?.caption && <figcaption>{image.caption}</figcaption>}
+</figure>
