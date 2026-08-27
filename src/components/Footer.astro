@@ -1,43 +1,53 @@
 ---
 import { Icon } from 'astro-icon/components';
 import site from '../../data/site.json';
----
-<footer style="background: var(--bg-dark); border-top: 1px solid rgba(245,239,230,0.12);">
-  <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-      <!-- Left — Logo + social -->
-      <div class="flex flex-col items-start gap-4">
-        <span class="font-display font-semibold text-2xl text-white tracking-tight">
-          {site.shortName}<span style="color: var(--accent-sakura);">.</span>
-        </span>
-        <p class="font-body font-light text-[13px] text-[var(--text-muted)] leading-relaxed">{site.footer.tagline}</p>
-        <div class="flex gap-3 mt-1">
-          {site.social.map(link => (
-            <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${link.platform}`} class="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--text-muted)] bg-transparent text-[var(--text-muted)] no-underline transition-all hover:border-white hover:text-white" style="opacity: 0.7;">
-              <Icon name={link.icon} class="w-4 h-4" />
-            </a>
-          ))}
-        </div>
-      </div>
+import contact from '../../data/contact.json';
 
-      <!-- Center — Nav links -->
-      <div class="flex flex-col gap-3 md:items-center">
-        {site.footer.nav.map(link => (
-          <a href={link.href} class="font-body font-light text-sm text-[var(--text-muted)] no-underline hover:text-white transition-colors">{link.label}</a>
+const github = site.social.find(link => link.platform === 'GitHub');
+const presence = [
+  ...(github ? [{ label: 'GitHub', href: github.url, icon: github.icon, external: true }] : []),
+  { label: 'Email', href: `mailto:${contact.email}`, icon: 'lucide:mail', external: false },
+];
+---
+<footer class="jp-footer" style="background: #E8E0D5; border-top: 1px solid #E0D8CC;">
+  <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)] py-[clamp(3.5rem,7vw,5rem)]">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-7 md:gap-12">
+
+      <!-- Copyright -->
+      <p class="font-body font-light text-[13px] tracking-[0.08em] text-[#6B645C] m-0 whitespace-nowrap">
+        {site.footer.copyright}
+      </p>
+
+      <!-- Navigation -->
+      <nav aria-label="Footer navigation" class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+        {site.footer.nav.map((link, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true" class="font-body text-sm text-[#B3A99B] select-none">·</span>}
+            <a
+              href={link.href}
+              class="font-body font-light text-sm text-[#6B645C] no-underline transition-colors duration-300 hover:text-[#8F6A4F]"
+            >
+              {link.label}
+            </a>
+          </>
+        ))}
+      </nav>
+
+      <!-- Presence -->
+      <div class="flex items-center gap-6">
+        {presence.map(item => (
+          <a
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+            aria-label={item.label}
+            class="flex items-center justify-center text-[#6B645C] no-underline transition-colors duration-300 hover:text-[#8F6A4F]"
+          >
+            <Icon name={item.icon} class="w-[18px] h-[18px]" />
+          </a>
         ))}
       </div>
 
-      <!-- Right — CTA -->
-      <div class="flex flex-col items-start md:items-end gap-4">
-        <a href={site.cta.href} class="jp-btn-primary text-sm" style="background: var(--accent-sakura); color: var(--bg-dark);">{site.footer.cta}</a>
-      </div>
     </div>
-
-    <div class="flex flex-col sm:flex-row items-center justify-between pt-8 mt-8 gap-3" style="border-top: 1px solid rgba(245,239,230,0.08);">
-      <p class="font-body font-light text-xs text-[var(--text-muted)]">{site.footer.copyright}</p>
-      <a href={site.domain} class="font-body font-light text-xs text-[var(--text-muted)] no-underline hover:text-white transition-colors">{new URL(site.domain).hostname}</a>
-    </div>
-
-    <p class="font-body font-light text-[11px] text-center mt-6" style="color: rgba(245,239,230,0.15);">{site.footer.easterEgg}</p>
   </div>
 </footer>

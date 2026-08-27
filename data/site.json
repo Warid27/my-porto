@@ -19,13 +19,9 @@
     "href": "/#contact"
   },
   "footer": {
-    "tagline": "Designed & built with too much espresso in Magelang, Indonesia.",
-    "copyright": "© 2025 Sinatrya Al Warid. All rights reserved.",
-    "easterEgg": "/* Built with intention, a quiet evening, and just enough caffeine. */",
-    "cta": "Get in touch →",
+    "copyright": "© 2026 Sinatrya Al Warid",
     "nav": [
       { "label": "About", "href": "/#about" },
-      { "label": "Skills", "href": "/#skills" },
       { "label": "Projects", "href": "/#projects" },
       { "label": "Blog", "href": "/blog/" },
       { "label": "Contact", "href": "/#contact" }
