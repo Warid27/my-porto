@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  CLOUDFLARE_PROJECT: warid-portfolio
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -23,10 +26,32 @@ jobs:
 
       - name: Build Astro site
         run: bun run build
+        env:
+          # Build-time (public) site key — renders the Turnstile widget when set
+          PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
+
+      - name: Sync Pages Function secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+        run: |
+          set -euo pipefail
+          sync_secret() {
+            local name="$1" value="$2"
+            if [ -n "$value" ]; then
+              printf '%s' "$value" | bunx wrangler pages secret put "$name" --project-name="$CLOUDFLARE_PROJECT"
+            else
+              echo "::warning::GitHub secret $name is empty — skipping sync to Cloudflare Pages"
+            fi
+          }
+          sync_secret WEB3FORMS_ACCESS_KEY "$WEB3FORMS_ACCESS_KEY"
+          sync_secret TURNSTILE_SECRET_KEY "$TURNSTILE_SECRET_KEY"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=warid-portfolio --branch=main
+          command: pages deploy ./dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=main
