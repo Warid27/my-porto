@@ -1,30 +1,38 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import blog from '../../../data/blog.json';
 
-// Mengambil semua post yang bukan draft dan mengurutkan dari yang terbaru
-const posts = (await getCollection('blog'))
-  .filter(post => !post.data.isDraft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// Urutkan dari yang terbaru
+const posts = [...blog.posts].sort((a, b) => +new Date(b.pubDate) - +new Date(a.pubDate));
 ---
-
-<Layout title="Blog | Warid">
+<Layout title="Blog | Warid" description={blog.body}>
+  <Navbar />
   <main class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[800px] mx-auto px-6">
-    <h1 class="jp-heading text-4xl mb-8">Tulisan & Pemikiran</h1>
+    <div class="mb-12" data-aos="fade-up">
+      <span class="jp-label">{blog.sectionLabel}</span>
+      <h1 class="jp-heading" style="font-size: clamp(2rem, 4vw, 2.5rem);">{blog.heading}</h1>
+      <p class="font-body font-light text-sm text-[var(--text-muted)] mt-2">{blog.body}</p>
+    </div>
     <div class="space-y-6">
-      {posts.map((post) => (
-        <a href={`/blog/${post.slug}/`} class="block jp-card p-6 no-underline hover:border-[var(--accent-sakura)] group">
-          <h2 class="text-xl font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-sakura)] transition-colors">
-            {post.data.title}
+      {posts.map((post, i) => (
+        <a href={`/blog/${post.slug}/`} class="block jp-card p-6 no-underline hover:border-[var(--accent-sakura)] group" data-aos="fade-up" data-aos-delay={i * 80}>
+          <h2 class="font-display text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-sakura)] transition-colors">
+            {post.title}
           </h2>
-          <p class="text-sm text-[var(--text-muted)] mt-2">{post.data.description}</p>
-          <time class="text-xs text-[var(--text-secondary)] mt-4 block">
-            {post.data.pubDate.toLocaleDateString('id-ID', {
-              year: 'numeric', month: 'long', day: 'numeric'
-            })}
-          </time>
+          <p class="font-body font-light text-sm text-[var(--text-muted)] mt-2 leading-relaxed">{post.description}</p>
+          <div class="flex flex-wrap items-center gap-2 mt-4">
+            <time class="font-body text-xs text-[var(--text-secondary)]" datetime={post.pubDate}>
+              {new Date(post.pubDate).toLocaleDateString('id-ID', {
+                year: 'numeric', month: 'long', day: 'numeric'
+              })}
+            </time>
+            {post.tags.map(tag => <span class="jp-tag">{tag}</span>)}
+          </div>
         </a>
       ))}
     </div>
   </main>
+  <Footer />
 </Layout>

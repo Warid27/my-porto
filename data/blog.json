@@ -1,0 +1,46 @@
+{
+  "sectionLabel": "Blog",
+  "heading": "Tulisan & Pemikiran",
+  "body": "Catatan, eksperimen, dan pelajaran dari perjalanan saya membangun things di web dan game. Post di bawah adalah placeholder — tulisan asli menyusul.",
+  "posts": [
+    {
+      "slug": "halo-blog-ini-dimulai",
+      "title": "Halo! Blog Ini Dimulai",
+      "description": "Kenapa saya akhirnya mulai menulis — dan apa yang bisa kamu harapkan dari blog ini.",
+      "pubDate": "2026-08-15",
+      "tags": ["personal", "writing"],
+      "content": [
+        "Setelah bertahun-tahun cuma membangun proyek untuk orang lain, saya akhirnya menyisihkan waktu untuk menulis. Bukan karena merasa jago menulis — justru karena tidak. Menulis adalah cara saya memaksa diri memahami sesuatu sampai akar-akarnya.",
+        "Rencananya, blog ini akan berisi tiga hal: catatan teknis dari proyek yang saya kerjakan, game dev log yang jujur (termasuk yang gagal), dan sesekali opini tentang web development di Indonesia.",
+        "Portfolio ini sendiri dibangun dengan Astro — dari React/Next.js ke static-first, dan jujur saja rasanya seperti napas segar. Mungkin itu jadi topik tulisan pertama yang serius.",
+        "Sementara itu, anggap post ini sebagai pembuka. Kalau kamu membaca ini, terima kasih sudah mampir. Tulisan asli menyusul — dan sementara itu, form kontak di bawah selalu terbuka."
+      ]
+    },
+    {
+      "slug": "dari-nextjs-ke-astro",
+      "title": "Dari Next.js ke Astro: Catatan Migrasi",
+      "description": "Lessons learned membangun ulang portfolio dengan Astro setelah bertahun-tahun di ekosistem React.",
+      "pubDate": "2026-06-02",
+      "tags": ["astro", "webdev", "react"],
+      "content": [
+        "Portfolio ini sebelumnya saya rencanakan akan dibangun dengan Next.js — default saya selama bertahun-tahun. Tapi untuk situs yang 99% konten statis, membungkus semuanya di dalam React runtime terasa seperti menyewa truk hanya untuk beli gorengan.",
+        "Astro memberikan pendekatan yang berbeda: komponen dirender jadi HTML statis, JavaScript hanya dikirim kalau benar-benar dibutuhkan. Hasilnya? Skor Lighthouse yang bikin senyum, dan struktur proyek yang justru terasa lebih sederhana.",
+        "Hal yang paling saya sukai: content collections. Frontmatter divalidasi dengan Zod saat build, jadi salah ketik di metadata langsung ketahuan sebelum deploy. Setelah terbiasa, saya bertanya-tanya kenapa ini bukan hal standar di semua SSG.",
+        "Bukan berarti Astro menggantikan Next.js untuk semua case — kalau butuh dashboard yang interaktif penuh, React (atau Solid, atau Vue) tetap pilihan yang tepat. Tapi untuk situs konten? Sulit untuk kembali ke cara lama."
+      ]
+    },
+    {
+      "slug": "game-dev-log-1-prototipe-pertama",
+      "title": "Game Dev Log #1: Prototipe Pertama",
+      "description": "Memulai perjalanan game development dengan C# — harapan, kegagalan kecil, dan pelajaran pertama.",
+      "pubDate": "2025-11-20",
+      "tags": ["gamedev", "csharp", "unity"],
+      "content": [
+        "Sebagai developer web, saya terbiasa dengan feedback loop yang cepat: ubah kode, refresh, lihat hasil. Game development menghancurkan asumsi itu dengan cara yang menyenangkan sekaligus menyakitkan.",
+        "Prototipe pertama saya sederhana: karakter yang bisa bergerak, satu musuh, satu mekanik inti. Dua minggu kemudian, mekanik itu masih belum terasa 'fun' — dan di situlah pelajaran pertamanya: ide bagus di kepala belum tentu bagus di tangan pemain.",
+        "Yang mengejutkan, skill web development ternyata banyak terpakai: state management adalah state management, entitas adalah data, dan sistem UI game tidak jauh beda dari komponen. Yang benar-benar baru adalah cara berpikir tentang fisika, timing, dan feel.",
+        "Log berikutnya akan membahas apa yang berhasil dan apa yang saya buang dari prototipe ini. Sampai jumpa di log #2."
+      ]
+    }
+  ]
+}

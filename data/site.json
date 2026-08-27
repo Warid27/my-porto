@@ -24,11 +24,11 @@
     "easterEgg": "/* Built with intention, a quiet evening, and just enough caffeine. */",
     "cta": "Get in touch →",
     "nav": [
-      { "label": "About", "href": "#about" },
-      { "label": "Skills", "href": "#skills" },
-      { "label": "Projects", "href": "#projects" },
+      { "label": "About", "href": "/#about" },
+      { "label": "Skills", "href": "/#skills" },
+      { "label": "Projects", "href": "/#projects" },
       { "label": "Blog", "href": "/blog/" },
-      { "label": "Contact", "href": "#contact" }
+      { "label": "Contact", "href": "/#contact" }
     ]
   },
   "social": [

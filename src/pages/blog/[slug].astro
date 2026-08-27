@@ -1,41 +1,51 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import blog from '../../../data/blog.json';
 
-// Menghasilkan URL dinamis untuk setiap file .mdx
-export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
+// Menghasilkan URL dinamis untuk setiap post di data/blog.json
+export function getStaticPaths() {
+  return blog.posts.map(post => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const pubDate = new Date(post.pubDate);
 ---
-
-<Layout title={`${post.data.title} | Warid`}>
-  <article class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[800px] mx-auto px-6 prose prose-stone lg:prose-lg prose-headings:font-heading prose-a:text-[var(--accent-sakura)]">
-    <header class="mb-10">
-      <h1 class="jp-heading text-4xl md:text-5xl mb-4">{post.data.title}</h1>
-      <time class="text-sm text-[var(--text-muted)]">
-        {post.data.pubDate.toLocaleDateString('id-ID', {
+<Layout title={`${post.title} | Warid`} description={post.description}>
+  <Navbar />
+  <article class="pt-[clamp(6rem,12vw,10rem)] pb-20 max-w-[720px] mx-auto px-6">
+    <header class="mb-10" data-aos="fade-up">
+      <a href="/blog/" class="font-body font-light text-sm text-[var(--text-secondary)] hover:text-[var(--accent-sakura)] transition-colors no-underline">← Kembali ke semua tulisan</a>
+      <h1 class="jp-heading text-4xl md:text-5xl mt-6 mb-4">{post.title}</h1>
+      <time class="font-body font-light text-sm text-[var(--text-muted)]" datetime={post.pubDate}>
+        {pubDate.toLocaleDateString('id-ID', {
           year: 'numeric', month: 'long', day: 'numeric'
         })}
       </time>
-      {post.data.tags.length > 0 && (
-        <div class="mt-4 flex gap-2">
-          {post.data.tags.map(tag => (
+      {post.tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {post.tags.map(tag => (
             <span class="jp-tag">{tag}</span>
           ))}
         </div>
       )}
     </header>
-    
-    <div class="mt-8 font-body font-light text-[var(--text-primary)]">
-      <!-- Merender isi markdown -->
-      <Content />
+
+    <div class="font-body font-light text-[16px] text-[var(--text-primary)] leading-[1.85] space-y-6" data-aos="fade-up" data-aos-delay="100">
+      {post.content.map(paragraph => (
+        <p>{paragraph}</p>
+      ))}
     </div>
+
+    <footer class="mt-16 pt-8" style="border-top: 1px solid var(--border);">
+      <p class="font-body font-light text-sm text-[var(--text-secondary)]">
+        Ada tanggapan atau ingin diskusi? <a href="/#contact" class="text-[var(--accent-sakura)] no-underline hover:underline">Hubungi saya →</a>
+      </p>
+    </footer>
   </article>
+  <Footer />
 </Layout>
