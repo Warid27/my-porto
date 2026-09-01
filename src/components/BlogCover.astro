@@ -2,6 +2,7 @@
 // Cover gambar untuk blog — dipakai di kartu index & hero post.
 // Kalau post tidak punya gambar (atau url-nya kosong), render placeholder
 // SVG japandi inline: tanpa CDN eksternal, tanpa request jaringan.
+
 interface BlogImage {
   url: string;
   alt?: string;
@@ -19,7 +20,10 @@ const { image, loading = 'lazy', class: className, ...rest } = Astro.props;
 // ID unik per instance — blog index me-render beberapa cover di satu halaman,
 // jadi id <defs> tidak boleh duplikat.
 const leafId = `jp-leaf-${Math.random().toString(36).slice(2, 8)}`;
+const mistId = `jp-mist-${Math.random().toString(36).slice(2, 8)}`;
+const pebbleId = `jp-pebble-${Math.random().toString(36).slice(2, 8)}`;
 ---
+
 <figure class:list={['blog-cover', className]} {...rest}>
   {image?.url ? (
     <img src={image.url} alt={image.alt ?? ''} loading={loading} decoding="async" />
@@ -28,60 +32,212 @@ const leafId = `jp-leaf-${Math.random().toString(36).slice(2, 8)}`;
       class="blog-cover-art"
       viewBox="0 0 1600 900"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
       focusable="false"
     >
-      <!-- Langit & tanah -->
-      <rect width="1600" height="900" fill="#EFE9E0" />
-      <rect y="648" width="1600" height="252" fill="#E8E0D5" />
-
-      <!-- Enso — kuas lingkaran yang tidak menutup sempurna -->
-      <circle
-        cx="820"
-        cy="405"
-        r="235"
-        fill="none"
-        stroke="#C4B9A9"
-        stroke-width="13"
-        stroke-linecap="round"
-        stroke-dasharray="1300 176.5"
-        transform="rotate(115 820 405)"
-      />
-
-      <!-- Ranting yang menembus enso -->
-      <path
-        d="M540 618 C 700 545, 890 470, 1085 418"
-        fill="none"
-        stroke="#A89F94"
-        stroke-width="7"
-        stroke-linecap="round"
-      />
-      <circle cx="1085" cy="418" r="9" fill="#8B9E7E" opacity="0.9" />
-
-      <!-- Daun — bentuk lanset runcing, urat daun jelas, hijau sage lembut -->
       <defs>
-        <g id={leafId}>
+        <!-- Gradasi vertikal: langit hangat bertransisi ke tanah berdebu -->
+        <linearGradient id={`${mistId}-sky`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#F2EDE4" />
+          <stop offset="55%" stop-color="#EEE7DC" />
+          <stop offset="100%" stop-color="#E5DDD0" />
+        </linearGradient>
+
+        <!-- Enso dengan tekanan kuas: tebal di bawah, menipis ke atas -->
+        <linearGradient id={`${mistId}-enso`} x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stop-color="#B8AC9A" stop-opacity="0.55" />
+          <stop offset="55%" stop-color="#9C8F7D" stop-opacity="0.95" />
+          <stop offset="100%" stop-color="#7A6E5D" stop-opacity="1" />
+        </linearGradient>
+
+        <!-- Vignette sangat halus: fokus ke tengah, pinggir meredup -->
+        <radialGradient id={`${mistId}-vig`} cx="0.5" cy="0.5" r="0.75">
+          <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+          <stop offset="100%" stop-color="#3D352B" stop-opacity="0.12" />
+        </radialGradient>
+
+        <!-- Daun sapu-sapu (willow-like): ramping, lentur -->
+        <symbol id={`${leafId}-willow`} viewBox="-30 -150 60 150">
           <path
-            d="M 0 0 C -9 -16, -31 -38, -33 -70 C -35 -102, -17 -121, 0 -132 C 17 -121, 35 -102, 33 -70 C 31 -38, 9 -16, 0 0 Z"
+            d="M 0 0
+               C -7 -18, -16 -42, -14 -78
+               C -12 -114, -4 -138, 0 -148
+               C 4 -138, 12 -114, 14 -78
+               C 16 -42, 7 -18, 0 0 Z"
             fill="#8B9E7E"
           />
           <path
-            d="M 0 -6 C 1 -46, 1 -88, 0 -127"
-            fill="none" stroke="#EFE9E0" stroke-width="3" stroke-linecap="round" opacity="0.55"
+            d="M 0 -8 C 0 -50, 0 -100, 0 -144"
+            fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.5"
           />
           <path
-            d="M 0 -48 Q -10 -52, -16 -63 M 0 -48 Q 10 -52, 16 -63 M 0 -84 Q -8 -88, -12 -97 M 0 -84 Q 8 -88, 12 -97"
-            fill="none" stroke="#EFE9E0" stroke-width="2" stroke-linecap="round" opacity="0.45"
+            d="M 0 -42 Q -6 -45, -10 -54
+               M 0 -42 Q  6 -45,  10 -54
+               M 0 -78 Q -5 -81,  -8 -88
+               M 0 -78 Q  5 -81,   8 -88
+               M 0 -110 Q -4 -113, -6 -120
+               M 0 -110 Q  4 -113,  6 -120"
+            fill="none" stroke="#EFE9E0" stroke-width="1.6" stroke-linecap="round" opacity="0.45"
           />
-        </g>
-      </defs>
-      <use href={`#${leafId}`} transform="translate(665 563) rotate(-55) scale(1.15)" opacity="0.95" />
-      <use href={`#${leafId}`} transform="translate(799 510) rotate(50)" opacity="0.78" />
-      <use href={`#${leafId}`} transform="translate(940 461) rotate(-45) scale(0.9)" opacity="0.88" />
+        </symbol>
 
-      <!-- Batu kecil di garis tanah -->
-      <ellipse cx="560" cy="640" rx="54" ry="15" fill="#C4B9A9" opacity="0.45" />
-      <ellipse cx="1150" cy="650" rx="34" ry="10" fill="#C4B9A9" opacity="0.35" />
+        <!-- Daun bulat telur (oval): berisi, variasi bentuk -->
+        <symbol id={`${leafId}-oval`} viewBox="-26 -90 52 90">
+          <path
+            d="M 0 0
+               C -22 -14, -26 -42, -18 -64
+               C -10 -84,  -2 -88,  0 -88
+               C  2 -88,  10 -84, 18 -64
+               C 26 -42, 22 -14, 0 0 Z"
+            fill="#7E9270"
+          />
+          <path
+            d="M 0 -6 C 1 -36, 1 -64, 0 -84"
+            fill="none" stroke="#F2EDE4" stroke-width="2" stroke-linecap="round" opacity="0.55"
+          />
+          <path
+            d="M 0 -28 Q -8 -32, -14 -42
+               M 0 -28 Q  8 -32,  14 -42
+               M 0 -56 Q -6 -60, -10 -68
+               M 0 -56 Q  6 -60,  10 -68"
+            fill="none" stroke="#F2EDE4" stroke-width="1.6" stroke-linecap="round" opacity="0.5"
+          />
+        </symbol>
+
+        <!-- Kuncup kecil (bud): aksen lembut di ujung ranting -->
+        <symbol id={`${leafId}-bud`} viewBox="-10 -22 20 22">
+          <path
+            d="M 0 0
+               C -7 -4, -9 -12, -5 -18
+               C -2 -22,  2 -22,  5 -18
+               C  9 -12,  7 -4,  0 0 Z"
+            fill="#8B9E7E"
+          />
+          <path
+            d="M 0 -3 L 0 -18"
+            fill="none" stroke="#F2EDE4" stroke-width="1.4" stroke-linecap="round" opacity="0.55"
+          />
+        </symbol>
+
+        <!-- Kerikil dengan gradien lembut -->
+        <symbol id={pebbleId} viewBox="-60 -18 120 36">
+          <ellipse cx="0" cy="0" rx="58" ry="16" fill="#C4B9A9" opacity="0.55" />
+          <ellipse cx="-8" cy="-4" rx="34" ry="8" fill="#D4C9B7" opacity="0.4" />
+        </symbol>
+      </defs>
+
+      <!-- 1. Latar bergradasi: menggantikan blok datar -->
+      <rect width="1600" height="900" fill={`url(#${mistId}-sky)`} />
+
+      <!-- 2. Garis cakrawala kabur, bukan hard-edge -->
+      <rect y="612" width="1600" height="288" fill="#E8E0D5" opacity="0.85" />
+      <rect y="612" width="1600" height="40" fill="#E8E0D5" opacity="0.5" />
+
+      <!-- 3. Siluet pegunungan jauh: samar, memberi kedalaman (Ma) -->
+      <path
+        d="M 0 612
+           L 120 560 L 220 588 L 340 528 L 460 580
+           L 580 545 L 720 575 L 860 535 L 980 570
+           L 1120 548 L 1260 582 L 1400 552 L 1520 578 L 1600 560
+           L 1600 612 Z"
+        fill="#C9BEAE" opacity="0.35"
+      />
+      <path
+        d="M 0 612
+           L 180 582 L 320 600 L 480 568 L 640 595
+           L 800 572 L 960 598 L 1140 578 L 1320 600 L 1480 582 L 1600 596
+           L 1600 612 Z"
+        fill="#BFB3A1" opacity="0.28"
+      />
+
+      <!-- 4. Enso — off-axis sesuai prinsip asimetri Japandi -->
+      <g transform="translate(960 380) rotate(-18)">
+        <!-- Bayangan tipis untuk kedalaman -->
+        <circle
+          cx="6" cy="8" r="248"
+          fill="none" stroke="#A89F94" stroke-width="14"
+          stroke-linecap="round"
+          stroke-dasharray="1500 108"
+          opacity="0.18"
+        />
+        <!-- Enso utama dengan tekanan kuas -->
+        <circle
+          cx="0" cy="0" r="248"
+          fill="none"
+          stroke={`url(#${mistId}-enso)`}
+          stroke-width="16"
+          stroke-linecap="round"
+          stroke-dasharray="1500 108"
+          transform="rotate(118)"
+        />
+      </g>
+
+      <!-- 5. Ranting bercabang alami, mengalir diagonal dari luar enso -->
+      <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path
+          d="M 380 720
+             C 520 660, 660 600, 780 540
+             C 880 490, 980 460, 1080 440"
+          stroke="#9A8E7E" stroke-width="9"
+        />
+        <path
+          d="M 720 575
+             C 760 530, 800 490, 860 470"
+          stroke="#9A8E7E" stroke-width="6"
+        />
+        <path
+          d="M 880 510
+             C 940 525, 1000 540, 1060 530"
+          stroke="#9A8E7E" stroke-width="5"
+        />
+        <path
+          d="M 1010 532
+             C 1030 525, 1050 515, 1070 500"
+          stroke="#9A8E7E" stroke-width="3.5"
+        />
+      </g>
+
+      <!-- 6. Daun: ritme, ukuran bervariasi, tidak kluster rapat -->
+      <g>
+        <!-- Gugusan kiri (di dalam enso) -->
+        <use href={`#${leafId}-willow`}
+             transform="translate(720 575) rotate(-48) scale(1.1)" opacity="0.95" />
+        <use href={`#${leafId}-willow`}
+             transform="translate(770 545) rotate(35) scale(0.85)" opacity="0.88" />
+        <use href={`#${leafId}-oval`}
+             transform="translate(840 502) rotate(-15) scale(0.95)" opacity="0.92" />
+
+        <!-- Gugusan ujung ranting (kanan-atas) -->
+        <use href={`#${leafId}-oval`}
+             transform="translate(1010 532) rotate(70) scale(0.78)" opacity="0.9" />
+        <use href={`#${leafId}-willow`}
+             transform="translate(1075 440) rotate(8) scale(0.92)" opacity="0.94" />
+        <use href={`#${leafId}-bud`}
+             transform="translate(1090 438) rotate(12) scale(1.1)" opacity="0.95" />
+
+        <!-- Aksen kecil di cabang atas -->
+        <use href={`#${leafId}-oval`}
+             transform="translate(862 470) rotate(-50) scale(0.6)" opacity="0.85" />
+        <use href={`#${leafId}-bud`}
+             transform="translate(870 462) rotate(-45) scale(0.9)" opacity="0.9" />
+
+        <!-- Dua daun melayang jatuh: narasi tenang, menyeimbangkan komposisi -->
+        <use href={`#${leafId}-willow`}
+             transform="translate(620 640) rotate(28) scale(0.7)" opacity="0.55" />
+        <use href={`#${leafId}-oval`}
+             transform="translate(1240 600) rotate(-25) scale(0.55)" opacity="0.5" />
+      </g>
+
+      <!-- 7. Kerikil tersebar natural di garis tanah -->
+      <use href={`#${pebbleId}`} transform="translate(420 700) scale(0.9)" />
+      <use href={`#${pebbleId}`} transform="translate(640 718) scale(0.55)" />
+      <use href={`#${pebbleId}`} transform="translate(900 705) scale(0.7)" />
+      <use href={`#${pebbleId}`} transform="translate(1180 720) scale(0.45)" />
+      <use href={`#${pebbleId}`} transform="translate(1380 712) scale(0.65)" />
+
+      <!-- 8. Vignette lembut -->
+      <rect width="1600" height="900" fill={`url(#${mistId}-vig)`} />
     </svg>
   )}
   {image?.caption && <figcaption>{image.caption}</figcaption>}
