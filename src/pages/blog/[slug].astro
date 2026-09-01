@@ -2,77 +2,55 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
-import Contact from '../../components/Contact.astro';
 import BlogCover from '../../components/BlogCover.astro';
 import blog from '../../../data/blog.json';
 
-// Content schema (data/blog.json):
-//   image?:   { url: string, alt?: string, caption?: string }   → hero under the title (falls back to inline SVG placeholder)
-//   content:  (string | { image: string, alt?: string, caption?: string })[]
-interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  pubDate: string;
-  tags: string[];
-  image?: BlogImage;
-  content: (string | { image: string; alt?: string; caption?: string })[];
-}
-
-// Menghasilkan URL dinamis untuk setiap post di data/blog.json
 export function getStaticPaths() {
-  return blog.posts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return blog.posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
 }
 
-const { post } = Astro.props as { post: BlogPost };
-const pubDate = new Date(post.pubDate);
+const { post } = Astro.props;
+const domain = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const breadcrumbs = [
+  { name: 'Home', url: `${domain}/` },
+  { name: 'Blog', url: `${domain}/blog/` },
+  { name: post.title, url: `${domain}/blog/${post.slug}/` },
+];
 ---
-<Layout title={`${post.title} | Warid`} description={post.description} bodyClass="jp-blog">
+
+<Layout
+  title={post.title}
+  description={post.description}
+  ogType="article"
+  publishedTime={new Date(post.pubDate).toISOString()}
+  breadcrumbs={breadcrumbs}
+  bodyClass="jp-blog"
+>
   <Navbar />
-  <main class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(4rem,8vw,6rem)]">
-    <article class="max-w-[700px] mx-auto px-6">
-      <header data-aos="fade-up">
-        <a href="/blog/" class="blog-back">
-          <span class="blog-back-arrow" aria-hidden="true">&larr;</span>
-          <span>Kembali ke semua tulisan</span>
-        </a>
-        <h1 class="blog-title blog-title--post mt-8 mb-7">{post.title}</h1>
-        <div class="flex flex-wrap items-center gap-2">
+  <main class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(5rem,10vw,8rem)]">
+    <article class="max-w-[760px] mx-auto px-6">
+      <a href="/blog/" class="jp-label inline-block mb-8">← Kembali ke semua tulisan</a>
+
+      <header class="mb-[clamp(2rem,4vw,3rem)]" data-aos="fade-up">
+        <h1 class="blog-title blog-title--page">{post.title}</h1>
+        <p class="blog-intro">{post.description}</p>
+        <div class="flex flex-wrap items-center gap-2 mt-6">
           <time class="blog-pill blog-pill--date" datetime={post.pubDate}>
-            {pubDate.toLocaleDateString('id-ID', {
+            {new Date(post.pubDate).toLocaleDateString('id-ID', {
               year: 'numeric', month: 'long', day: 'numeric'
             })}
           </time>
           {post.tags.map(tag => <span class="blog-pill">{tag}</span>)}
         </div>
-        {post.description && <p class="blog-lede mt-8">{post.description}</p>}
+        <div class="blog-rule" aria-hidden="true"></div>
       </header>
 
-      <BlogCover image={post.image} class="blog-hero" loading="eager" data-aos="fade-up" />
+      <BlogCover image={post.image} class="mb-10" loading="eager" />
 
-      <div class="blog-prose mt-10" data-aos="fade-up" data-aos-delay="100">
-        {post.content.map(block => typeof block === 'string' ? (
-          <p>{block}</p>
-        ) : (
-          <figure class="blog-figure">
-            <img src={block.image} alt={block.alt ?? ''} loading="lazy" decoding="async" />
-            {block.caption && <figcaption>{block.caption}</figcaption>}
-          </figure>
-        ))}
+      <div class="blog-prose space-y-6" data-aos="fade-up">
+        {post.content.map(paragraph => <p>{paragraph}</p>)}
       </div>
-
-      <div class="blog-end" aria-hidden="true">&middot;&middot;&middot;</div>
-
-      <footer class="blog-article-footer">
-        <p>
-          Ada tanggapan atau ingin diskusi? <a href="#contact">Hubungi saya &rarr;</a>
-        </p>
-      </footer>
     </article>
   </main>
-  <Contact />
   <Footer />
 </Layout>

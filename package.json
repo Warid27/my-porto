@@ -8,6 +8,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/lucide": "^1.2.0",
     "@iconify-json/simple-icons": "^1.2.93",

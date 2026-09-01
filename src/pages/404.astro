@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import site from '../../data/site.json';
+
+Astro.response.status = 404;
+const domain = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const breadcrumbs = [
+  { name: 'Home', url: `${domain}/` },
+  { name: '404', url: Astro.url.href },
+];
+---
+
+<Layout
+  title={`404 — Page not found`}
+  description="The page you were looking for does not exist."
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+  <main class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(5rem,10vw,8rem)]">
+    <div class="max-w-[640px] mx-auto px-6 text-center">
+      <p class="font-jp text-[clamp(6rem,15vw,9rem)] leading-none text-[#D4907A] m-0">404</p>
+      <h1 class="font-display text-[clamp(2rem,5vw,3rem)] mt-4 mb-3 text-[#2C2420]">
+        Halaman tidak ditemukan
+      </h1>
+      <p class="font-body text-[#4A3C35] text-lg mb-8">
+        Tautan yang kamu buka sudah pindah atau memang tidak pernah ada.
+        Coba salah satu jalur ini:
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="/" class="blog-pill blog-pill--date no-underline">Beranda</a>
+        <a href="/blog/" class="blog-pill blog-pill--date no-underline">Blog</a>
+        <a href="/#projects" class="blog-pill blog-pill--date no-underline">Proyek</a>
+        <a href="/#contact" class="blog-pill blog-pill--date no-underline">Kontak</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

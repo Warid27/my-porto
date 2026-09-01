@@ -34,4 +34,8 @@ bun-debug.log*
 QWEN.md
 .qwen/
 
+# We use bun for CI; ignore pnpm artifacts if they sneak in locally
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
 /specs

@@ -5,10 +5,19 @@ import Footer from '../../components/Footer.astro';
 import BlogCover from '../../components/BlogCover.astro';
 import blog from '../../../data/blog.json';
 
-// Urutkan dari yang terbaru
 const posts = [...blog.posts].sort((a, b) => +new Date(b.pubDate) - +new Date(a.pubDate));
+const domain = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const breadcrumbs = [
+  { name: 'Home', url: `${domain}/` },
+  { name: 'Blog', url: `${domain}/blog/` },
+];
 ---
-<Layout title="Blog | Warid" description={blog.body} bodyClass="jp-blog">
+<Layout
+  title="Blog"
+  description={blog.body}
+  breadcrumbs={breadcrumbs}
+  bodyClass="jp-blog"
+>
   <Navbar />
   <main class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(5rem,10vw,8rem)]">
     <div class="max-w-[760px] mx-auto px-6">
